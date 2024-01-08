@@ -13,11 +13,17 @@ import java.util.concurrent.Callable;
         description = "Compares two configuration files and shows a difference.")
 
 class App implements Runnable {
+    @Option(names = {"-f", "--format"}, paramLabel = "format", description="output format [default: stylish]")
+    String format;
+    @Parameters(paramLabel = "filepath1", description = "path to first file")
+    File files1;
+    @Parameters(paramLabel = "filepath2", description = "path to second file")
+    File files2;
     @Override
     public void run() {
         System.out.println("Hello, world");
     }
-    public static void main(String... args) {
+    public static void main(String[] args) {
         int exitCode = new CommandLine(new App()).execute(args);
         System.exit(exitCode);
     }
