@@ -19,7 +19,7 @@ jobs:
           gradle-version: 8.3
       - run: make lint
       - run: make test
-      - run: make report
+      #- run: make report
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
         env:
