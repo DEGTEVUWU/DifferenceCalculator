@@ -1,4 +1,4 @@
-name: functionality check
+name: functionality check2
 on: push
 jobs:
   build:
