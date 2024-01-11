@@ -6,15 +6,15 @@ import picocli.CommandLine.Parameters;
 
 import java.io.File;
 import java.io.IOException;
-import java.math.BigInteger;
-import java.nio.file.Files;
-import java.security.MessageDigest;
+//import java.math.BigInteger;
+//import java.nio.file.Files;
+//import java.security.MessageDigest;
 import java.util.concurrent.Callable;
 @Command(name = "gendiff", mixinStandardHelpOptions = true, version = "App 1.0",
         description = "Compares two configuration files and shows a difference.")
 
 class App implements Callable {
-    @Option(names = {"-f", "--format"}, paramLabel = "format", description="output format [default: stylish]")
+    @Option(names = {"-f", "--format"}, paramLabel = "format", description = "output format [default: stylish]")
     String format;
     @Parameters(paramLabel = "filepath1", description = "path to first file")
     File files1;

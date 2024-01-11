@@ -6,8 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.net.URL;
+//import java.lang.reflect.Array;
+//import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
@@ -33,7 +33,7 @@ public class Test1 {
 
         String jsonCarArray =
                 "[{ \"color\" : \"Black\", \"type\" : \"BMW\" }, { \"color\" : \"Red\", \"type\" : \"FIAT\" }]";
-        List<Car> listCar = objectMapper.readValue(jsonCarArray, new TypeReference<List<Car>>(){});
+        List<Car> listCar = objectMapper.readValue(jsonCarArray, new TypeReference<List<Car>>() { });
         for (var element : listCar) {
             System.out.println(element.getColor());
             System.out.println(element.getType());
@@ -45,7 +45,7 @@ public class Test1 {
 
         String json3 = "{ \"color\" : \"Black\", \"type\" : \"BMW\" , \"color2\" : \"White\", \"type2\" : \"Audi\"}";
         Map<String, Object> map
-                = objectMapper.readValue(json3, new TypeReference<Map<String,Object>>(){});
+                = objectMapper.readValue(json3, new TypeReference<Map<String, Object>>() { });
         System.out.println(map);
 
 

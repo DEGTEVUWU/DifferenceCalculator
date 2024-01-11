@@ -1,6 +1,6 @@
 package hexlet.code.TestsForLearn;
 
-import java.io.IOException;
+//import java.io.IOException;
 
 public class Car {
     private String color;
