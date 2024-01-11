@@ -5,4 +5,7 @@
 
 
 Example of comparing two .json files:  
-[LOOK](https://asciinema.org/a/2mRgNUFUOps5D7ZBa5hmHSP16)
+[LOOK](https://asciinema.org/a/2mRgNUFUOps5D7ZBa5hmHSP16)  
+
+Example of comparing two .yml files:  
+[LOOK](https://asciinema.org/a/qVm7XJNQpBSpW0GluDZ8KTI7r)
