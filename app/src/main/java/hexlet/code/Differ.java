@@ -14,6 +14,8 @@ public class Differ {
     public static String generate(String value1, String value2) throws IOException {
         File file1 = Paths.get(value1).toFile();
         File file2 = Paths.get(value2).toFile();
+        file1.getName();
+
 
         ObjectMapper objectMapper = new ObjectMapper();
         String resultString = "{ \n";
