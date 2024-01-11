@@ -6,15 +6,53 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 //import java.util.stream.Collectors;
 
 public class Differ {
+
+    public static ArrayList getListFiles(String str) {
+        ArrayList<File> listWithFileNames = new ArrayList<>();
+
+        File f = new File(str);
+        for (File s : f.listFiles()) {
+            if (s.isFile()) {
+                listWithFileNames.add(s);
+            } else if (s.isDirectory()) {
+                getListFiles(s.getAbsolutePath());
+            }
+        }
+        return listWithFileNames;
+    }
+
     public static String generate(String value1, String value2) throws IOException {
-        File file1 = Paths.get(value1).toFile();
-        File file2 = Paths.get(value2).toFile();
-        file1.getName();
+        File file1 = null;
+        File file2 = null;
+        ArrayList<File> listWithFileNames1 = new ArrayList<>();
+        ArrayList<File> listWithFileNames2 = new ArrayList<>();
+
+
+        if (!(value1.startsWith("./")) && !(value2.startsWith("./"))) {
+            listWithFileNames1 = getListFiles("./src/main/resources");
+            listWithFileNames2 = getListFiles("./src/main/resources");
+
+            for (File fil : listWithFileNames1) {
+                if (fil.getName().equals(value1)) {
+                    file1 = fil;
+                }
+            }
+            for (File fil : listWithFileNames2) {
+                if (fil.getName().equals(value2)) {
+                    file2 = fil;
+                }
+            }
+        } else {
+            file1 = Paths.get(value1).toFile();
+            file2 = Paths.get(value2).toFile();
+        }
+
 
 
         ObjectMapper objectMapper = new ObjectMapper();
