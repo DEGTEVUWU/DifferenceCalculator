@@ -17,9 +17,9 @@ class App implements Callable {
     @Option(names = {"-f", "--format"}, paramLabel = "format", description = "output format [default: stylish]")
     String format;
     @Parameters(paramLabel = "filepath1", description = "path to first file")
-    File files1;
+    String files1;
     @Parameters(paramLabel = "filepath2", description = "path to second file")
-    File files2;
+    String files2;
     @Override
     public String call() throws IOException {
         System.out.println(Differ.generate(files1, files2));

@@ -5,12 +5,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Map;
 import java.util.TreeMap;
 //import java.util.stream.Collectors;
 
 public class Differ {
-    public static String generate(File file1, File file2) throws IOException {
+    public static String generate(String value1, String value2) throws IOException {
+        File file1 = Paths.get(value1).toFile();
+        File file2 = Paths.get(value2).toFile();
+
         ObjectMapper objectMapper = new ObjectMapper();
         String resultString = "{ \n";
         TreeMap<String, Object> map1 = new TreeMap<>();
