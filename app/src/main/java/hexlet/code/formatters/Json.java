@@ -60,10 +60,10 @@ public class Json {
             } else if (mapWithStatusKeys.get(key).isStatus().equals("added")) {
                 Object value;
 
-                if (PropertyValue.propertyValue(map1.get(key)).equals("String type")) {
-                    value = "\"" + map1.get(key) + "\"";
+                if (PropertyValue.propertyValue(map2.get(key)).equals("String type")) {
+                    value = "\"" + map2.get(key) + "\"";
                 } else {
-                    value = map1.get(key);
+                    value = map2.get(key);
                 }
 
                 resultString += "\"" + "+" + key + "\"" + ":" + value + ",";

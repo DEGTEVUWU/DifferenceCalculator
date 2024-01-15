@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import hexlet.code.formatters.Json;
 import hexlet.code.formatters.Plain;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +19,7 @@ public class ReversToJsonTest {
         var mapWithStatusKey = CompareMaps.compareMaps(testMap1, testMap2);
         var actual = Json.json(testMap1, testMap2, mapWithStatusKey);
 
-        var expected = "{\"+chars1\":[a, b, c],\"numbers1\":[1,2,3,4], \"-numbers2\": [wow, yes]}";
+        var expected = "{\"+chars1\":[a, b, c],\"numbers1\":[1, 2, 3, 4],\"-numbers2\":[wow, yes]}";
 
         assertThat(actual).isEqualTo(expected);
     }
