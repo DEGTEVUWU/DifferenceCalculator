@@ -33,7 +33,8 @@ public class Differ {
         return resultString;
     }
 
-    public static String stylish(TreeMap<String, Object> map1, TreeMap<String, Object> map2, TreeMap<String, Status> mapWithStatusKeys) {
+    public static String stylish(TreeMap<String, Object> map1, TreeMap<String, Object> map2,
+                                 TreeMap<String, Status> mapWithStatusKeys) {
         String resultString = "{ \n";
         LinkedHashMap<String, Object> resultMap = new LinkedHashMap<>();
 
