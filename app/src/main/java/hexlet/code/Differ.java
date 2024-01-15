@@ -4,13 +4,16 @@ package hexlet.code;
 //import com.fasterxml.jackson.databind.ObjectMapper;
 //import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
-import com.sun.source.tree.Tree;
+//import com.sun.source.tree.Tree;
 
-import java.io.File;
+//import java.io.File;
 import java.io.IOException;
 //import java.nio.file.Paths;
-import java.io.ObjectInputFilter;
-import java.util.*;
+//import java.io.ObjectInputFilter;
+import java.util.LinkedHashMap;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 //import java.util.stream.Collectors;
 
 public class Differ {
