@@ -1,6 +1,7 @@
 package hexlet.code.formatters;
 
 import hexlet.code.Status;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.LinkedHashMap;
 import java.util.Set;
@@ -22,51 +23,41 @@ public class Plain {
             if (mapWithStatusKeys.get(key).isStatus().equals("changed")) {
                 Object value1;
                 Object value2;
-                if (propertyValue(map1.get(key)).equals("Simple type")) {
+                if (PropertyValue.propertyValue(map1.get(key)).equals("Simple type")) {
                     value1 = map1.get(key);
-                } else if (propertyValue(map1.get(key)).equals("String type")) {
+                } else if (PropertyValue.propertyValue(map1.get(key)).equals("String type")) {
                     value1 = "'" + map1.get(key) + "'";
                 } else {
                     value1 = "[complex value]";
                 }
 
-                if (propertyValue(map2.get(key)).equals("Simple type")) {
+                if (PropertyValue.propertyValue(map2.get(key)).equals("Simple type")) {
                     value2 = map2.get(key);
-                } else if (propertyValue(map2.get(key)).equals("String type")) {
+                } else if (PropertyValue.propertyValue(map2.get(key)).equals("String type")) {
                     value2 = "'" + map2.get(key) + "'";
                 } else {
                     value2 = "[complex value]";
                 }
-                resultString += "\nProperty '" + key + "' was updated. From " + value1 + " to " + value2;
+                resultString += "Property '" + key + "' was updated. From " + value1 + " to " + value2 + "\n";
             } else if (mapWithStatusKeys.get(key).isStatus().equals("deleted")) {
 
-                resultString += "\nProperty '" + key + "' was removed";
+                resultString += "Property '" + key + "' was removed" + "\n";
             } else if (mapWithStatusKeys.get(key).isStatus().equals("added")) {
                 Object value;
-                if (propertyValue(map2.get(key)).equals("Simple type")  ) {
+                if (PropertyValue.propertyValue(map2.get(key)).equals("Simple type")  ) {
                     value = map2.get(key);
-                } else if (propertyValue(map2.get(key)).equals("String type")){
+                } else if (PropertyValue.propertyValue(map2.get(key)).equals("String type")){
                     value = "'" + map2.get(key) + "'";
                 } else {
                     value = "[complex value]";
                 }
-                resultString += "\nProperty '" + key + "' was added with value: " + value;
+                resultString += "Property '" + key + "' was added with value: " + value + "\n";
             }
         }
 
+        resultString = StringUtils.chop(resultString);
         return resultString;
     }
 
-    public static String propertyValue (Object value1) {
-        if (value1 instanceof Integer || value1 instanceof Character ||
-            value1 instanceof Boolean || value1 instanceof Double || value1 instanceof Float || value1 instanceof Long ||
-        value1 == null) {
-            return "Simple type";
-        } else if(value1 instanceof String) {
-            return  "String type";
-        } else if (value1.getClass().isArray()) {
-            return "Composite type";
-        }
-        return "Composite type";
-    }
+
 }

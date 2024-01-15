@@ -14,14 +14,26 @@ import java.util.TreeMap;
 import static org.assertj.core.api.Assertions.assertThat;
 public class PlainTest {
     @Test
-    void plain() throws IOException {
+    void plainJson() throws IOException {
         TreeMap<String, Object> testMap1 = Parser.parser("./src/test/resources/test1.json");
         TreeMap<String, Object> testMap2 = Parser.parser("./src/test/resources/test2.json");
 
         var mapWithStatusKey = CompareMaps.compareMaps(testMap1, testMap2);
         var actual = Plain.plain(testMap1, testMap2, mapWithStatusKey);
 
-        var expected = "Property 'verbose' was added with value: true";
-        assertThat(actual).equals(expected);
+        var expected = "\nProperty 'verbose' was removed";
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void plainYml() throws IOException {
+        TreeMap<String, Object> testMap1 = Parser.parser("./src/test/resources/test2.yml");
+        TreeMap<String, Object> testMap2 = Parser.parser("./src/test/resources/test3.yml");
+
+        var mapWithStatusKey = CompareMaps.compareMaps(testMap1, testMap2);
+        var actual = Plain.plain(testMap1, testMap2, mapWithStatusKey);
+
+        var expected = "\nProperty 'follow' was added with value: false";
+        assertThat(actual).isEqualTo(expected);
     }
 }

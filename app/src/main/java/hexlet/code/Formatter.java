@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import hexlet.code.formatters.Json;
 import hexlet.code.formatters.Plain;
 import hexlet.code.formatters.Stylish;
 
@@ -13,6 +14,8 @@ public class Formatter {
             resultString = Stylish.stylish(map1, map2, mapWithStatusKeys);
         } else if (format.equals("plain")) {
             resultString = Plain.plain(map1, map2, mapWithStatusKeys);
+        } else if (format.equals("json")) {
+            resultString = Json.json(map1, map2, mapWithStatusKeys);
         }
         return resultString;
     }
