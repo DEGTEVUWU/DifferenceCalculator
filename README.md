@@ -13,4 +13,8 @@ Example of comparing two .yml files:
 Example of comparing two files .yaml and .json in formats with nested structures
 
 [LOOK](https://asciinema.org/a/ZMDinocMXrZkvlVX8IGBpKZnd)  
+
+An example of working with two different types of data output - stylish and plain  
+[LOOK](https://asciinema.org/a/UGL1OLKIVzOAfMPY94zqxbyF8)  
+
 next..
