@@ -1,4 +1,5 @@
 package hexlet.code;
+import hexlet.code.formatters.Stylish;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -58,7 +59,7 @@ class DifferTest {
 
 
         var mapWithStatusKey = CompareMaps.compareMaps(testMap1, testMap2);
-        var actual = Differ.stylish(testMap1, testMap2, mapWithStatusKey);
+        var actual = Stylish.stylish(testMap1, testMap2, mapWithStatusKey);
         var expected = "{ \n" + "  + chars1: [a, b, c]\n" + "    numbers1: [1, 2, 3, 4]\n" + "  - numbers2: [wow, yes]\n" + "}";
         assertThat(actual).isEqualTo(expected);
 

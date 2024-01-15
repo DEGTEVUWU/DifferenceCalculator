@@ -23,7 +23,7 @@ class App implements Callable {
     String files2;
     @Override
     public String call() throws IOException {
-        System.out.println(Differ.generate(files1, files2));
+        System.out.println(Differ.generate(files1, files2, format));
         return "";
     }
     public static void main(String[] args) throws IOException {
