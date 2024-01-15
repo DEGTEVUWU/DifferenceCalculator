@@ -9,8 +9,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-import static hexlet.code.Differ.getListFiles;
-
 public class Parser {
     public static TreeMap<String, Object> parser(String path) throws IOException {
         File file = null;

@@ -4,52 +4,58 @@ package hexlet.code;
 //import com.fasterxml.jackson.databind.ObjectMapper;
 //import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
+import com.sun.source.tree.Tree;
+
 import java.io.File;
 import java.io.IOException;
 //import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.TreeMap;
+import java.io.ObjectInputFilter;
+import java.util.*;
 //import java.util.stream.Collectors;
 
 public class Differ {
-
-    public static ArrayList getListFiles(String str) {
-        ArrayList<File> listWithFileNames = new ArrayList<>();
-
-        File f = new File(str);
-        for (File s : f.listFiles()) {
-            if (s.isFile()) {
-                listWithFileNames.add(s);
-            } else if (s.isDirectory()) {
-                getListFiles(s.getAbsolutePath());
-            }
-        }
-        return listWithFileNames;
-    }
-
     public static String generate(String path1, String path2) throws IOException {
-        String resultString = "{ \n";
-
         TreeMap<String, Object> map1 = Parser.parser(path1);
         TreeMap<String, Object> map2 = Parser.parser(path2);
 
-        for (Map.Entry<String, Object> item : map1.entrySet()) {
-            if (map1.get(item.getKey()).equals(map2.get(item.getKey()))) {
-                resultString = resultString + "    " + item + "\n";
-            } else {
-                resultString = resultString + "  " + "- " + item + "\n";
-            }
+        TreeMap<String, Status> mapWithStatusKeys = CompareMaps.compareMaps(map1, map2);
+        String resultString = stylish(map1, map2, mapWithStatusKeys);
+
+        /*
+        for (Map.Entry<String, Object> entry : resultMap.entrySet()) {
+            System.out.println(entry.getKey() + " - " + entry.getValue());
         }
 
-        for (Map.Entry<String, Object> item : map2.entrySet()) {
-            if (!(map2.get(item.getKey()).equals(map1.get(item.getKey())))) {
-                resultString = resultString + "  " + "+ " + item + "\n";
+         */
+        return resultString;
+    }
+
+    public static String stylish(TreeMap<String, Object> map1, TreeMap<String, Object> map2, TreeMap<String, Status> mapWithStatusKeys) {
+        String resultString = "{ \n";
+        LinkedHashMap<String, Object> resultMap = new LinkedHashMap<>();
+
+        Set<String> set = new TreeSet<>(map1.keySet());
+        Set<String> set2 = new TreeSet<>(map2.keySet());
+        set.addAll(set2);
+
+        for (var key : set) {
+            if (mapWithStatusKeys.get(key).isStatus().equals("unchanged")) {
+                resultMap.put(key, map1.get(key));
+                resultString += " ".repeat(4) + key + ": " + String.valueOf(map1.get(key)) + "\n";
+            } else if (mapWithStatusKeys.get(key).isStatus().equals("changed")) {
+                resultMap.put("-" + key, map1.get(key));
+                resultMap.put("+" + key, map2.get(key));
+                resultString += " ".repeat(2) + "- " + key + ": " + String.valueOf(map1.get(key)) + "\n";
+                resultString += " ".repeat(2) + "+ " + key + ": " + String.valueOf(map2.get(key)) + "\n";
+            } else if (mapWithStatusKeys.get(key).isStatus().equals("deleted")) {
+                resultMap.put("-" + key, map1.get(key));
+                resultString += " ".repeat(2) + "- " + key + ": " + String.valueOf(map1.get(key)) + "\n";
+            } else if (mapWithStatusKeys.get(key).isStatus().equals("added")) {
+                resultMap.put("+" + key, map2.get(key));
+                resultString += " ".repeat(2) + "+ " + key + ": " + String.valueOf(map2.get(key)) + "\n";
             }
         }
-
-        resultString = resultString + "}";
-
+        resultString += "}";
         return resultString;
     }
 }
