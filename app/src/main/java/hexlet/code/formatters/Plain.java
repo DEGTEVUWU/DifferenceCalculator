@@ -44,9 +44,9 @@ public class Plain {
                 resultString += "Property '" + key + "' was removed" + "\n";
             } else if (mapWithStatusKeys.get(key).isStatus().equals("added")) {
                 Object value;
-                if (PropertyValue.propertyValue(map2.get(key)).equals("Simple type")  ) {
+                if (PropertyValue.propertyValue(map2.get(key)).equals("Simple type")) {
                     value = map2.get(key);
-                } else if (PropertyValue.propertyValue(map2.get(key)).equals("String type")){
+                } else if (PropertyValue.propertyValue(map2.get(key)).equals("String type")) {
                     value = "'" + map2.get(key) + "'";
                 } else {
                     value = "[complex value]";

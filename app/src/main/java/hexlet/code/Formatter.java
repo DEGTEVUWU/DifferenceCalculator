@@ -7,7 +7,7 @@ import hexlet.code.formatters.Stylish;
 import java.util.TreeMap;
 
 public class Formatter {
-    public static String formater(TreeMap<String, Object> map1, TreeMap<String, Object> map2,
+    public static String formatter(TreeMap<String, Object> map1, TreeMap<String, Object> map2,
                                   TreeMap<String, Status> mapWithStatusKeys, String format) {
         String resultString = "";
         if (format.equals("stylish")) {

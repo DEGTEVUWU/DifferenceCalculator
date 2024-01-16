@@ -1,12 +1,6 @@
 package hexlet.code;
-
-import static org.assertj.core.api.Assertions.setMaxElementsForPrinting;
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
-
 import java.util.TreeMap;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CompareMapsTest {

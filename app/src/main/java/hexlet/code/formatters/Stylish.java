@@ -10,7 +10,7 @@ import java.util.TreeSet;
 public class Stylish {
     public static String stylish(TreeMap<String, Object> map1, TreeMap<String, Object> map2,
                                  TreeMap<String, Status> mapWithStatusKeys) {
-        String resultString = "{ \n";
+        String resultString = "{\n";
         LinkedHashMap<String, Object> resultMap = new LinkedHashMap<>();
 
         Set<String> set = new TreeSet<>(map1.keySet());
