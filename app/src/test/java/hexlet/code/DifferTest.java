@@ -12,7 +12,7 @@ class DifferTest {
         String value2 = "./src/test/resources/test2.json";
 
         var actual = Differ.generate(value1, value2);
-        var expected = "{ \n"
+        var expected = "{\n"
                 + "    host: hexlet.io\n"
                 + "  - verbose: true\n"
                 + "}";
@@ -26,7 +26,7 @@ class DifferTest {
         String value2 = "./src/test/resources/voidFile1.json";
 
         var actual = Differ.generate(value1, value2);
-        var expected = "{ \n}";
+        var expected = "{\n}";
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -36,7 +36,7 @@ class DifferTest {
         String value2 = "./src/test/resources/test2.yml";
 
         var actual = Differ.generate(value1, value2);
-        var expected = "{ \n"
+        var expected = "{\n"
                 + "  - follow: false\n"
                 + "    host: hexlet.io\n"
                 + "}";
@@ -49,7 +49,7 @@ class DifferTest {
         String value2 = "./src/test/resources/voidTest2.yml";
 
         var actual = Differ.generate(value1, value2);
-        var expected = "{ \n}";
+        var expected = "{\n}";
         assertThat(actual).isEqualTo(expected);
     }
 
