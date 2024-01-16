@@ -17,4 +17,7 @@ Example of comparing two files .yaml and .json in formats with nested structures
 An example of working with two different types of data output - stylish and plain  
 [LOOK](https://asciinema.org/a/UGL1OLKIVzOAfMPY94zqxbyF8)  
 
+An example of the JSON formatter working with two files in .yaml and .json formats  
+[LOOK](https://asciinema.org/a/id3Wm3Ludzt9PngZID2rSOP6R)  
+
 next..
