@@ -21,7 +21,7 @@ public class PlainTest {
         var mapWithStatusKey = CompareMaps.compareMaps(testMap1, testMap2);
         var actual = Plain.plain(testMap1, testMap2, mapWithStatusKey);
 
-        var expected = "\nProperty 'verbose' was removed";
+        var expected = "Property 'verbose' was removed";
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -33,7 +33,7 @@ public class PlainTest {
         var mapWithStatusKey = CompareMaps.compareMaps(testMap1, testMap2);
         var actual = Plain.plain(testMap1, testMap2, mapWithStatusKey);
 
-        var expected = "\nProperty 'follow' was added with value: false";
+        var expected = "Property 'follow' was added with value: false";
         assertThat(actual).isEqualTo(expected);
     }
 }
