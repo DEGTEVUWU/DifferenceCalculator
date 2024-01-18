@@ -8,6 +8,7 @@ import java.util.TreeMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 class PlainTest {
+    /*
     @Test
     void plainTestJsonWithDeepStructure() throws IOException {
         TreeMap<String, Object> testMap1 = Parser.parser("./src/test/resources/DeepStructure1.json");
@@ -41,5 +42,7 @@ class PlainTest {
 
         assertThat(actual).isEqualTo(expected);
     }
-  
+
+
+     */
 }

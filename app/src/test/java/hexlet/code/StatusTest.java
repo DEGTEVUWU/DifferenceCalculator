@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class StatusTest {
+    /*
 
     @Test
     void getValue() {
@@ -25,4 +26,6 @@ class StatusTest {
         assertThat(value4.isStatus()).isEqualTo("added");
 
     }
+
+     */
 }

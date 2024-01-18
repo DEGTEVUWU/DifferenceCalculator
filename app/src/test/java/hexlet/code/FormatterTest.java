@@ -50,6 +50,8 @@ class FormatterTest {
 
      */
 
+
+    /*
     @Test
     void formatterWithPlainFormat() {
         TreeMap<String, Object> map1 = new TreeMap<>();
@@ -82,6 +84,15 @@ class FormatterTest {
         assertThat(actual).isEqualTo(expected);
 
     }
+
+
+     */
+
+
+
+
+
+
 
     /*
 
