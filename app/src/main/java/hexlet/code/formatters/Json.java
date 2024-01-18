@@ -2,71 +2,69 @@ package hexlet.code.formatters;
 
 import hexlet.code.Status;
 import org.apache.commons.lang3.StringUtils;
-import java.util.Set;
 import java.util.TreeMap;
-import java.util.TreeSet;
 
 public class Json {
-    public static String json(TreeMap<String, Object> map1, TreeMap<String, Object> map2,
-                                 TreeMap<String, Status> mapWithStatusKeys) {
+    public static String json(TreeMap<String, Status> mapWithKeysStatus) {
         String resultString = "{";
 
-        Set<String> set = new TreeSet<>(map1.keySet());
-        Set<String> set2 = new TreeSet<>(map2.keySet());
-        set.addAll(set2);
+        for (var keyWithStatus : mapWithKeysStatus.entrySet()) {
+            var key = keyWithStatus.getKey();
+            var data = keyWithStatus.getValue();
 
-        for (var key : set) {
-            if (mapWithStatusKeys.get(key).isStatus().equals("unchanged")) {
+            if (data.isStatus().equals("unchanged")) {
                 Object value;
-                if (PropertyValue.propertyValue(map1.get(key)).equals("String type")) {
-                    value = "\"" + map1.get(key) + "\"";
+
+                if (PropertyValue.propertyValue(data.getOldValue()).equals("String type")) {
+                    value = "\"" + data.getOldValue() + "\"";
                 } else {
-                    value = map1.get(key);
+                    value = data.getOldValue();
                 }
 
                 resultString += "\"" + key + "\"" + ":" + value + ",";
 
-            } else if (mapWithStatusKeys.get(key).isStatus().equals("changed")) {
+            } else if (data.isStatus().equals("changed")) {
                 Object value1;
                 Object value2;
 
-                if (PropertyValue.propertyValue(map1.get(key)).equals("String type")) {
-                    value1 = "\"" + map1.get(key) + "\"";
+                if (PropertyValue.propertyValue(data.getOldValue()).equals("String type")) {
+                    value1 = "\"" + data.getOldValue() + "\"";
                 } else {
-                    value1 = map1.get(key);
+                    value1 = data.getOldValue();
                 }
-                if (PropertyValue.propertyValue(map2.get(key)).equals("String type")) {
-                    value2 = "\"" + map2.get(key) + "\"";
+                if (PropertyValue.propertyValue(data.getNewValue()).equals("String type")) {
+                    value2 = "\"" + data.getNewValue() + "\"";
                 } else {
-                    value2 = map2.get(key);
+                    value2 = data.getNewValue();
                 }
 
                 resultString += "\"" + "-" + key + "\"" + ":" + value1 + ",";
                 resultString += "\"" + "+" + key + "\"" + ":" + value2 + ",";
 
-            } else if (mapWithStatusKeys.get(key).isStatus().equals("deleted")) {
+            } else if (data.isStatus().equals("deleted")) {
                 Object value;
 
-                if (PropertyValue.propertyValue(map1.get(key)).equals("String type")) {
-                    value = "\"" + map1.get(key) + "\"";
+                if (PropertyValue.propertyValue(data.getOldValue()).equals("String type")) {
+                    value = "\"" + data.getOldValue() + "\"";
                 } else {
-                    value = map1.get(key);
+                    value = data.getOldValue();
                 }
 
                 resultString += "\"" + "-" + key + "\"" + ":" + value + ",";
 
-            } else if (mapWithStatusKeys.get(key).isStatus().equals("added")) {
+            } else if (data.isStatus().equals("added")) {
                 Object value;
 
-                if (PropertyValue.propertyValue(map2.get(key)).equals("String type")) {
-                    value = "\"" + map2.get(key) + "\"";
+                if (PropertyValue.propertyValue(data.getNewValue()).equals("String type")) {
+                    value = "\"" + data.getNewValue() + "\"";
                 } else {
-                    value = map2.get(key);
+                    value = data.getNewValue();
                 }
 
                 resultString += "\"" + "+" + key + "\"" + ":" + value + ",";
             }
         }
+
         resultString = StringUtils.chop(resultString);
         resultString += "}";
         return resultString;

@@ -10,7 +10,7 @@ public class Differ {
 
         TreeMap<String, Status> mapWithStatusKeys = CompareMaps.compareMaps(map1, map2);
 
-        String resultString = Formatter.formatter(map1, map2, mapWithStatusKeys, format);
+        String resultString = Formatter.formatter(mapWithStatusKeys, format);
 
         return resultString;
     }
