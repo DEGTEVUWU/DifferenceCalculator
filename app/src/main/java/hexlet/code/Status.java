@@ -1,16 +1,22 @@
 package hexlet.code;
 
 public class Status {
-    private final String value;
+    private final Object oldValue;
+    private final Object newValue;
+
     private final String status;
 
-    public Status(String value, String status) {
-        this.value = value;
+    public Status(Object oldValue, Object newValue, String status) {
+        this.oldValue = oldValue;
+        this.newValue = newValue;
         this.status = status;
     }
 
-    public String getValue() {
-        return value;
+    public Object getOldValue() {
+        return oldValue;
+    }
+    public Object getNewValue() {
+        return newValue;
     }
 
     public String isStatus() {

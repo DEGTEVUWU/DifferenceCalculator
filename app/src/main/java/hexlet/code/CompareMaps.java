@@ -1,33 +1,30 @@
 package hexlet.code;
 
+import java.util.Objects;
+import java.util.Set;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class CompareMaps {
     public static TreeMap<String, Status> compareMaps(TreeMap<String, Object> map1, TreeMap<String, Object> map2) {
         TreeMap<String, Status> resultMap = new TreeMap<>();
 
-        for (String everyKey : map1.keySet()) {
-            String key = everyKey;
-            Object value1 = map1.get(everyKey);
+        Set<String> keys = new TreeSet<>();
+        keys.addAll(map1.keySet());
+        keys.addAll(map2.keySet());
 
-            if (map2.containsKey(everyKey)) {
-                Object value2 = map2.get(everyKey);
-                if (compareValues(value1, value2)) {
-                    resultMap.put(key, new Status(key, "unchanged"));
-                } else {
-                    resultMap.put(key, new Status(key, "changed"));
-                }
-            } else {
-                resultMap.put(key, new Status(key, "deleted"));
-            }
-        }
+        for (var key : keys) {
+            Object oldValue = map1.get(key);
+            Object newValue = map2.get(key);
 
-        for (String everyKey : map2.keySet()) {
-            String key = everyKey;
-            Object value2 = map2.get(everyKey);
-
-            if (!map1.containsKey(everyKey)) {
-                resultMap.put(key, new Status(key, "added"));
+            if (!map1.containsKey(key)) {
+                resultMap.put(key, new Status(oldValue, newValue, "added"));
+            } else if (!map2.containsKey(key)) {
+                resultMap.put(key, new Status(oldValue, newValue, "deleted"));
+            } else if (Objects.equals(map1.get(key), map2.get(key))) {
+                resultMap.put(key, new Status(oldValue, newValue, "unchanged"));
+            } else if (!Objects.equals(map1.get(key), map2.get(key))) {
+                resultMap.put(key, new Status(oldValue, newValue, "changed"));
             }
         }
 
