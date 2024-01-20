@@ -4,7 +4,7 @@ import java.util.TreeMap;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CompareMapsTest {
-    /*
+
 
     @Test
     void compareMaps() {
@@ -15,8 +15,8 @@ class CompareMapsTest {
         map1.put("key1", 12);
         map1.put("key2", true);
         map2.put("key2", "WOW!");
-        mapResult.put("key1", new Status("key1", "deleted"));
-        mapResult.put("key2", new Status("key1", "changed"));
+        mapResult.put("key1", new Status(12, true, "deleted"));
+        mapResult.put("key2", new Status("WOW!", "", "changed"));
 
         var actual = CompareMaps.compareMaps(map1, map2);
         var expected = mapResult;
@@ -42,9 +42,8 @@ class CompareMapsTest {
 
         assertThat(actual1).isFalse();
         assertThat(actual2).isTrue();
-        //assertThat(actual3).isEqualTo(expected1);
+        //assertThat(actual3).isTrue();
 
     }
 
-     */
 }

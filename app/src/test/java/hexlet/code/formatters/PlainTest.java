@@ -2,47 +2,54 @@ package hexlet.code.formatters;
 
 import hexlet.code.CompareMaps;
 import hexlet.code.Parser;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.TreeMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 class PlainTest {
-    /*
+    private static String result;
+
+    private static Path getFixturePath(String fileName) {
+        return Paths.get("src", "test", "resources", "fixtures", fileName)
+                .toAbsolutePath().normalize();
+    }
+
+    private static String readFixture(String fileName) throws Exception {
+        Path filePath = getFixturePath(fileName);
+        return Files.readString(filePath).trim();
+    }
+    @BeforeAll
+    public static void beforeAll() throws Exception {
+        result = readFixture("result_deep_structure_plain.txt");
+    }
     @Test
-    void plainTestJsonWithDeepStructure() throws IOException {
-        TreeMap<String, Object> testMap1 = Parser.parser("./src/test/resources/DeepStructure1.json");
-        TreeMap<String, Object> testMap2 = Parser.parser("./src/test/resources/DeepStructure2.json");
+    void jsonFormatTest() throws IOException {
+        TreeMap<String, Object> testMap1 = Parser.parser("./src/test/resources/fixtures/DeepStructureTest1.json");
+        TreeMap<String, Object> testMap2 = Parser.parser("./src/test/resources/fixtures/DeepStructureTest2.json");
 
         var mapWithStatusKey = CompareMaps.compareMaps(testMap1, testMap2);
-        var actual = Plain.plain(testMap1, testMap2, mapWithStatusKey);
+        var actual = Plain.plain(mapWithStatusKey);
 
-        var expected = "Property 'chars1' was added with value: [complex value]\n"
-                + "Property 'key1' was updated. From 147 to [complex value]\n"
-                + "Property 'key2' was added with value: true\n"
-                + "Property 'numbers1' was updated. From \'Wow\' to [complex value]\n"
-                + "Property 'numbers2' was removed";
+        var expected = result;
 
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
-    void plainTestYmlWithDeepStructure() throws IOException {
-        TreeMap<String, Object> testMap1 = Parser.parser("./src/test/resources/DeepStructure1.yml");
-        TreeMap<String, Object> testMap2 = Parser.parser("./src/test/resources/DeepStructure2.yml");
+    void ymlFormatTest() throws IOException {
+        TreeMap<String, Object> testMap1 = Parser.parser("./src/test/resources/fixtures/DeepStructureTest1.yml");
+        TreeMap<String, Object> testMap2 = Parser.parser("./src/test/resources/fixtures/DeepStructureTest2.yml");
 
         var mapWithStatusKey = CompareMaps.compareMaps(testMap1, testMap2);
-        var actual = Plain.plain(testMap1, testMap2, mapWithStatusKey);
+        var actual = Plain.plain(mapWithStatusKey);
 
-        var expected = "Property 'chars1' was added with value: [complex value]\n"
-                + "Property 'key1' was updated. From 147 to [complex value]\n"
-                + "Property 'key2' was added with value: true\n"
-                + "Property 'numbers1' was updated. From \'Wow\' to [complex value]\n"
-                + "Property 'numbers2' was removed";
+        var expected = result;
 
         assertThat(actual).isEqualTo(expected);
     }
-
-
-     */
 }

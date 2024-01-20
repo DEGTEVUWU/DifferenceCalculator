@@ -1,0 +1,5 @@
+Property 'chars1' was added with value: [complex value]
+Property 'key1' was updated. From 147 to [complex value]
+Property 'key2' was added with value: true
+Property 'numbers1' was updated. From 'Wow' to [complex value]
+Property 'numbers2' was removed

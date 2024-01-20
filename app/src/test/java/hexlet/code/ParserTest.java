@@ -1,10 +1,7 @@
 package hexlet.code;
 
 import org.junit.jupiter.api.Test;
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.TreeMap;
 
@@ -14,7 +11,7 @@ class ParserTest {
 
     @Test
     void parser() throws IOException {
-        TreeMap<String, Object> actual = Parser.parser("./src/test/resources/DeepStructure1.json");
+        TreeMap<String, Object> actual = Parser.parser("./src/test/resources/fixtures/DeepStructureTest1.json");
         TreeMap<String, Object> expected = new TreeMap<>();
 
         expected.put("numbers1", "Wow");
@@ -30,35 +27,12 @@ class ParserTest {
 
     }
 
-    /*
-
-    //this test runs locally, but my github action does not pass it, this is strange
-
     @Test
-    void getListFiles() throws IOException {
-        ArrayList<File> actual = Parser.getListFiles("./src/main/resources");
-        ArrayList<File> expected = new ArrayList<>();
-        File file1 = Paths.get("./src/main/resources/file4.json").toFile();
-        File file2 = Paths.get("./src/main/resources/file3.yml").toFile();
-        File file3 = Paths.get("./src/main/resources/file1.json").toFile();
-        File file4 = Paths.get("./src/main/resources/file2.yml").toFile();
-        File file5 = Paths.get("./src/main/resources/file2.json").toFile();
-        File file6 = Paths.get("./src/main/resources/file3.json").toFile();
-        File file7 = Paths.get("./src/main/resources/file1.yml").toFile();
-        File file8 = Paths.get("./src/main/resources/file4.yml").toFile();
+    void parserTest2() throws IOException {
+        TreeMap<String, Object> actual = Parser.parser("./src/test/resources/fixtures/DeepStructureTest1.json");
+        TreeMap<String, Object> expected = new TreeMap<>();
 
-        expected.add(file1);
-        expected.add(file2);
-        expected.add(file3);
-        expected.add(file4);
-        expected.add(file5);
-        expected.add(file6);
-        expected.add(file7);
-        expected.add(file8);
-
-        assertThat(actual.toString()).isEqualTo(expected.toString());
+        assertThat(actual).isNotEmpty();
 
     }
-
-     */
 }

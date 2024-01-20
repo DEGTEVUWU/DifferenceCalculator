@@ -1,18 +1,44 @@
 package hexlet.code;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.TreeMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class FormatterTest {
+    private static String resultPlain;
+    private static String resultStylish;
+    private static String resultJson;
 
-    /*
 
-    //doesn't work correctly now
+    private static Path getFixturePath(String fileName) {
+        return Paths.get("src", "test", "resources", "fixtures", fileName)
+                .toAbsolutePath().normalize();
+    }
 
-    @Test
-    void formatterWithStylishFormat() {
+    private static String readFixture(String fileName) throws Exception {
+        Path filePath = getFixturePath(fileName);
+        return Files.readString(filePath).trim();
+    }
+    @BeforeAll
+    public static void beforeAll() throws Exception {
+        resultPlain = readFixture("result_deep_structure_plain.txt");
+        resultStylish = readFixture("result_deep_structure_stylish.txt");
+        resultJson = readFixture("result_deep_structure.json");
+
+    }
+
+
+
+/*
+  @Test
+    void formatterWithStylishFormat() throws JsonProcessingException {
         TreeMap<String, Object> map1 = new TreeMap<>();
         TreeMap<String, Object> map2 = new TreeMap<>();
         TreeMap<String, Status> mapWithStatus = new TreeMap<>();
@@ -26,34 +52,26 @@ class FormatterTest {
         map2.put("key1", new int[]{28, 28});
         map2.put("key2", true);
 
-        mapWithStatus.put("numbers1", new Status("numbers1", "changed"));
-        mapWithStatus.put("numbers2", new Status("numbers2", "deleted"));
-        mapWithStatus.put("key1", new Status("key1", "changed"));
-        mapWithStatus.put("chars1", new Status("chars1", "added"));
-        mapWithStatus.put("key2", new Status("key2", "added"));
+        mapWithStatus.put("numbers1", new Status("Wow", new int[]{1, 2, 3, 4}, "changed"));
+        mapWithStatus.put("numbers2", new Status(new String[]{"wow", "yes"}, null, "deleted"));
+        mapWithStatus.put("key1", new Status(147, new int[]{28, 28}, "changed"));
+        mapWithStatus.put("chars1", new Status(null, new String[]{"a", "b", "c"}, "added"));
+        mapWithStatus.put("key2", new Status(null, true, "added"));
 
-        var actual = Formatter.formatter(map1, map2, mapWithStatus, "stylish");
+        var actual = Formatter.formatter(mapWithStatus, "stylish");
 
-        var expected = "{\n" +
-                "  + chars1: [a, b, c]\n" +
-                "  - key1: 147\n" +
-                "  + key1: [28, 28]\n" +
-                "  + key2: true\n" +
-                "  - numbers1: Wow\n" +
-                "  + numbers1: [1, 2, 3, 4]\n" +
-                "  - numbers2: [wow, yes]\n" +
-                "}";
+        var expected = resultStylish;
 
         assertThat(actual).isEqualTo(expected);
 
     }
 
-     */
+
+ */
 
 
-    /*
     @Test
-    void formatterWithPlainFormat() {
+    void formatterWithPlainFormat() throws JsonProcessingException {
         TreeMap<String, Object> map1 = new TreeMap<>();
         TreeMap<String, Object> map2 = new TreeMap<>();
         TreeMap<String, Status> mapWithStatus = new TreeMap<>();
@@ -67,41 +85,31 @@ class FormatterTest {
         map2.put("key1", new int[]{28, 28});
         map2.put("key2", true);
 
-        mapWithStatus.put("numbers1", new Status("numbers1", "changed"));
-        mapWithStatus.put("numbers2", new Status("numbers2", "deleted"));
-        mapWithStatus.put("key1", new Status("key1", "changed"));
-        mapWithStatus.put("chars1", new Status("chars1", "added"));
-        mapWithStatus.put("key2", new Status("key2", "added"));
+        mapWithStatus.put("numbers1", new Status("Wow", new int[]{1, 2, 3, 4}, "changed"));
+        mapWithStatus.put("numbers2", new Status(new String[]{"wow", "yes"}, null, "deleted"));
+        mapWithStatus.put("key1", new Status(147, new int[]{28, 28}, "changed"));
+        mapWithStatus.put("chars1", new Status(null, new String[]{"a", "b", "c"}, "added"));
+        mapWithStatus.put("key2", new Status(null, true, "added"));
 
-        var actual = Formatter.formatter(map1, map2, mapWithStatus, "plain");
+        var actual = Formatter.formatter(mapWithStatus, "plain");
 
-        var expected = "Property 'chars1' was added with value: [complex value]\n"
-                + "Property 'key1' was updated. From 147 to [complex value]\n"
-                + "Property 'key2' was added with value: true\n"
-                + "Property 'numbers1' was updated. From 'Wow' to [complex value]\n"
-                + "Property 'numbers2' was removed";
+        var expected = resultPlain;
 
         assertThat(actual).isEqualTo(expected);
 
     }
 
 
-     */
 
 
 
 
 
 
-
-    /*
-
-
-    //doesn't work correctly now
 
 
     @Test
-    void formatterWithJsonFormat() {
+    void formatterWithJsonFormat() throws JsonProcessingException {
         TreeMap<String, Object> map1 = new TreeMap<>();
         TreeMap<String, Object> map2 = new TreeMap<>();
         TreeMap<String, Status> mapWithStatus = new TreeMap<>();
@@ -115,26 +123,17 @@ class FormatterTest {
         map2.put("key1", new int[]{28, 28});
         map2.put("key2", true);
 
-        mapWithStatus.put("numbers1", new Status("numbers1", "changed"));
-        mapWithStatus.put("numbers2", new Status("numbers2", "deleted"));
-        mapWithStatus.put("key1", new Status("key1", "changed"));
-        mapWithStatus.put("chars1", new Status("chars1", "added"));
-        mapWithStatus.put("key2", new Status("key2", "added"));
+        mapWithStatus.put("numbers1", new Status("Wow", new int[]{1, 2, 3, 4}, "changed"));
+        mapWithStatus.put("numbers2", new Status(new String[]{"wow", "yes"}, null, "deleted"));
+        mapWithStatus.put("key1", new Status(147, new int[]{28, 28}, "changed"));
+        mapWithStatus.put("chars1", new Status(null, new String[]{"a", "b", "c"}, "added"));
+        mapWithStatus.put("key2", new Status(null, true, "added"));
 
-        var actual = Formatter.formatter(map1, map2, mapWithStatus, "json");
+        var actual = Formatter.formatter(mapWithStatus, "json");
 
-        var expected = "{\"+chars1\":[a, b, c]," +
-                "\"-key1\":147," +
-                "\"+key1\":[28, 28]," +
-                "\"+key2\":true," +
-                "\"-numbers1\":\"Wow\"," +
-                "\"+numbers1\":[1, 2, 3, 4]," +
-                "\"-numbers2\":[wow, yes]" +
-                "}";
+        var expected = resultJson;
 
         assertThat(actual).isEqualTo(expected);
 
     }
-
-     */
 }

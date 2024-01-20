@@ -32,8 +32,8 @@ class DifferTest {
 
     @Test
     void checkingJsonFileInThePlainFormatter() throws IOException {
-        String value1 = "./src/test/resources/DeepStructure1.json";
-        String value2 = "./src/test/resources/DeepStructure2.json";
+        String value1 = "./src/test/resources/fixtures/DeepStructureTest1.json";
+        String value2 = "./src/test/resources/fixtures/DeepStructureTest2.json";
 
         var actual = Differ.generate(value1, value2, "plain");
 
@@ -44,8 +44,8 @@ class DifferTest {
 
     @Test
     void checkingYmlFileInThePlainFormatter() throws IOException {
-        String value1 = "./src/test/resources/DeepStructure1.yml";
-        String value2 = "./src/test/resources/DeepStructure2.yml";
+        String value1 = "./src/test/resources/fixtures/DeepStructureTest1.yml";
+        String value2 = "./src/test/resources/fixtures/DeepStructureTest2.yml";
 
         var actual = Differ.generate(value1, value2, "plain");
 
@@ -56,8 +56,8 @@ class DifferTest {
 
     @Test
     void checkingJsonFileInTheStylishFormatter() throws IOException {
-        String value1 = "./src/test/resources/DeepStructure1.json";
-        String value2 = "./src/test/resources/DeepStructure2.json";
+        String value1 = "./src/test/resources/fixtures/DeepStructureTest1.json";
+        String value2 = "./src/test/resources/fixtures/DeepStructureTest2.json";
 
         var actual = Differ.generate(value1, value2, "stylish");
 
@@ -68,8 +68,8 @@ class DifferTest {
 
     @Test
     void checkingYmlFileInTheStylishFormatter() throws IOException {
-        String value1 = "./src/test/resources/DeepStructure1.yml";
-        String value2 = "./src/test/resources/DeepStructure2.yml";
+        String value1 = "./src/test/resources/fixtures/DeepStructureTest1.yml";
+        String value2 = "./src/test/resources/fixtures/DeepStructureTest2.yml";
 
         var actual = Differ.generate(value1, value2, "stylish");
 
@@ -80,8 +80,8 @@ class DifferTest {
 
     @Test
     void checkingJsonFileInTheJsonFormatter() throws IOException {
-        String value1 = "./src/test/resources/DeepStructure1.json";
-        String value2 = "./src/test/resources/DeepStructure2.json";
+        String value1 = "./src/test/resources/fixtures/DeepStructureTest1.json";
+        String value2 = "./src/test/resources/fixtures/DeepStructureTest2.json";
 
         var actual = Differ.generate(value1, value2, "json");
 
@@ -92,8 +92,8 @@ class DifferTest {
 
     @Test
     void checkingYmlFileInTheJsonFormatter() throws IOException {
-        String value1 = "./src/test/resources/DeepStructure1.yml";
-        String value2 = "./src/test/resources/DeepStructure2.yml";
+        String value1 = "./src/test/resources/fixtures/DeepStructureTest1.yml";
+        String value2 = "./src/test/resources/fixtures/DeepStructureTest2.yml";
 
         var actual = Differ.generate(value1, value2, "json");
 
@@ -104,8 +104,8 @@ class DifferTest {
 
     @Test
     void checkingJsonFileInTheDefaultFormatter() throws IOException {
-        String value1 = "./src/test/resources/DeepStructure1.json";
-        String value2 = "./src/test/resources/DeepStructure2.json";
+        String value1 = "./src/test/resources/fixtures/DeepStructureTest1.json";
+        String value2 = "./src/test/resources/fixtures/DeepStructureTest2.json";
 
         var actual = Differ.generate(value1, value2);
 
@@ -116,8 +116,8 @@ class DifferTest {
 
     @Test
     void checkingYmlFileInTheDefaultFormatter() throws IOException {
-        String value1 = "./src/test/resources/DeepStructure1.yml";
-        String value2 = "./src/test/resources/DeepStructure2.yml";
+        String value1 = "./src/test/resources/fixtures/DeepStructureTest1.yml";
+        String value2 = "./src/test/resources/fixtures/DeepStructureTest2.yml";
 
         var actual = Differ.generate(value1, value2);
 

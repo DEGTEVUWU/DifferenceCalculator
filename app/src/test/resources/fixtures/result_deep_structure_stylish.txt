@@ -1,0 +1,9 @@
+{
+  + chars1: [a, b, c]
+  - key1: 147
+  + key1: [28, 28]
+  + key2: true
+  - numbers1: Wow
+  + numbers1: [1, 2, 3, 4]
+  - numbers2: [wow, yes]
+}
