@@ -18,6 +18,13 @@ public class Differ {
     public static String generate(String path1, String path2) throws IOException {
         return generate(path1, path2, "stylish");
     }
+
+    public static String getDataFormat(String filePath) {
+        int index = filePath.lastIndexOf('.');
+        return index > 0
+                ? filePath.substring(index + 1)
+                : "";
+    }
 }
 
 

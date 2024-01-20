@@ -126,4 +126,35 @@ class DifferTest {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @Test
+    void checkingGetDataFormatWithJsonFormat() throws IOException {
+        String value = "DeepStructure1.json";
+
+        var actual = Differ.getDataFormat(value);
+
+        var expected = "json";
+
+        assertThat(actual).isEqualTo(expected);
+    }
+    @Test
+    void checkingGetDataFormatWithYmlFormat() throws IOException {
+        String value = "DeepStructure1.yml";
+
+        var actual = Differ.getDataFormat(value);
+
+        var expected = "yml";
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void checkingGetDataFormatWithUncheckingFormat() throws IOException {
+        String value = "DeepStructure";
+
+        var actual = Differ.getDataFormat(value);
+
+        var expected = "";
+
+        assertThat(actual).isEqualTo(expected);
+    }
 }
