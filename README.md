@@ -30,7 +30,7 @@ cd java-project-61
 make install
 ```
 
-### To run, use: ###
+### To run, use ###
 
 ```
 ./build/install/app/bin/app [-f required format(not necessary option)] filepeth1 filepeth2
