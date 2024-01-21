@@ -8,6 +8,7 @@ import java.util.TreeMap;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ParserTest {
+    private final static int value2 = 147;
 
     @Test
     void parser() throws IOException {
@@ -16,7 +17,7 @@ class ParserTest {
 
         expected.put("numbers1", "Wow");
         expected.put("numbers2", new String[]{"wow", "yes"});
-        expected.put("key1", 147);
+        expected.put("key1", value2);
 
         String valueFromActual = Arrays.toString(new Object[]{actual.get("numbers1")});
         String valueFromExpected = Arrays.toString(new Object[]{expected.get("numbers1")});

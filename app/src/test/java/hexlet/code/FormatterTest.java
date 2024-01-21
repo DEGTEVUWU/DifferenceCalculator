@@ -12,6 +12,10 @@ import java.util.TreeMap;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class FormatterTest {
+    private final static int value2 = 147;
+    private final static int value3 = 3;
+    private final static int value4 = 4;
+    private final static int value5 = 28;
     private static String resultPlain;
     private static String resultStylish;
     private static String resultJson;
@@ -78,16 +82,16 @@ class FormatterTest {
 
         map1.put("numbers1", "Wow");
         map1.put("numbers2", new String[]{"wow", "yes"});
-        map1.put("key1", 147);
+        map1.put("key1", value2);
 
-        map2.put("numbers1", new int[]{1, 2, 3, 4});
+        map2.put("numbers1", new int[]{1, 2, value3, value4});
         map2.put("chars1", new String[]{"a", "b", "c"});
-        map2.put("key1", new int[]{28, 28});
+        map2.put("key1", new int[]{value5, value5});
         map2.put("key2", true);
 
-        mapWithStatus.put("numbers1", new Status("Wow", new int[]{1, 2, 3, 4}, "changed"));
+        mapWithStatus.put("numbers1", new Status("Wow", new int[]{1, 2, value3, value4}, "changed"));
         mapWithStatus.put("numbers2", new Status(new String[]{"wow", "yes"}, null, "deleted"));
-        mapWithStatus.put("key1", new Status(147, new int[]{28, 28}, "changed"));
+        mapWithStatus.put("key1", new Status(value2, new int[]{value5, value5}, "changed"));
         mapWithStatus.put("chars1", new Status(null, new String[]{"a", "b", "c"}, "added"));
         mapWithStatus.put("key2", new Status(null, true, "added"));
 
@@ -116,16 +120,16 @@ class FormatterTest {
 
         map1.put("numbers1", "Wow");
         map1.put("numbers2", new String[]{"wow", "yes"});
-        map1.put("key1", 147);
+        map1.put("key1", value2);
 
-        map2.put("numbers1", new int[]{1, 2, 3, 4});
+        map2.put("numbers1", new int[]{1, 2, value3, value4});
         map2.put("chars1", new String[]{"a", "b", "c"});
         map2.put("key1", new int[]{28, 28});
         map2.put("key2", true);
 
-        mapWithStatus.put("numbers1", new Status("Wow", new int[]{1, 2, 3, 4}, "changed"));
+        mapWithStatus.put("numbers1", new Status("Wow", new int[]{1, 2, value3, value4}, "changed"));
         mapWithStatus.put("numbers2", new Status(new String[]{"wow", "yes"}, null, "deleted"));
-        mapWithStatus.put("key1", new Status(147, new int[]{28, 28}, "changed"));
+        mapWithStatus.put("key1", new Status(value2, new int[]{value5, value5}, "changed"));
         mapWithStatus.put("chars1", new Status(null, new String[]{"a", "b", "c"}, "added"));
         mapWithStatus.put("key2", new Status(null, true, "added"));
 
