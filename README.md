@@ -36,11 +36,9 @@ make install
 ./build/install/app/bin/app [-f required format(not necessary option)] filepeth1 filepeth2
 ```
 ### Examples of using ###
-
-[Example of comparing two .json files](https://asciinema.org/a/2mRgNUFUOps5D7ZBa5hmHSP16)  
+![Example of comparing two .json files](https://asciinema.org/a/2mRgNUFUOps5D7ZBa5hmHSP16)  
 
 [Example of comparing two .yml files](https://asciinema.org/a/qVm7XJNQpBSpW0GluDZ8KTI7r)
-
 
 [Example of comparing two files .yaml and .json in formats with nested structures](https://asciinema.org/a/ZMDinocMXrZkvlVX8IGBpKZnd)  
 
