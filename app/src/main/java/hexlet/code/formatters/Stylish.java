@@ -12,7 +12,7 @@ public class Stylish {
             var data = keyWithStatus.getValue();
 
             if (data.isStatus().equals("unchanged")) {
-                resultString += " ".repeat(4) + key + ": " + data.getOldValue() + "\n";
+                resultString += "    " + key + ": " + data.getOldValue() + "\n";
             } else if (data.isStatus().equals("changed")) {
                 resultString += " ".repeat(2) + "- " + key + ": " + data.getOldValue() + "\n";
                 resultString += " ".repeat(2) + "+ " + key + ": " + data.getNewValue() + "\n";

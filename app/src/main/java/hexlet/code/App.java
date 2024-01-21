@@ -16,11 +16,11 @@ import java.util.concurrent.Callable;
 class App implements Callable {
     @Option(names = {"-f", "--format"}, defaultValue = "stylish", paramLabel = "format",
             description = "output format [default: ${DEFAULT-VALUE}]")
-    String format;
+    private String format;
     @Parameters(paramLabel = "filepath1", description = "path to first file")
-    String files1;
+    private String files1;
     @Parameters(paramLabel = "filepath2", description = "path to second file")
-    String files2;
+    private String files2;
     @Override
     public String call() throws IOException {
         System.out.println(Differ.generate(files1, files2, format));

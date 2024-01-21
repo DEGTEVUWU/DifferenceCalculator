@@ -4,18 +4,17 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class PropertyValueTest {
-    private final static int value1 = 12;
-    private final static int value2 = 147;
-    private final static int value3 = 3;
-    private final static int value4 = 4;
+    private final int valueSecond = 147;
+    private final int valueThird = 3;
+    private final int valueFourth = 4;
 
     @Test
     void propertyValue() {
         Object obj1 = null;
         Object obj2 = true;
-        Object obj3 = value2;
+        Object obj3 = valueSecond;
         Object obj4 = "Some string";
-        Object obj5 = new int[]{1, 2, value3, value4};
+        Object obj5 = new int[]{1, 2, valueThird, valueFourth};
         Object obj6 = new String[]{"wow", "its", "some", "massive"};
         Object obj7 = new Character[]{};
 

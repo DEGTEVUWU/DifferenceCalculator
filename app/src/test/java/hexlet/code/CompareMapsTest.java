@@ -1,13 +1,12 @@
 package hexlet.code;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.util.TreeMap;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CompareMapsTest {
-    private final static int value1 = 12;
-    private final static int value2 = 147;
-    private final static int value3 = 3;
+    private final int valueFirst = 12;
+    private final int valueSecond = 147;
+    private final int valueThird = 3;
 
 
 
@@ -17,10 +16,10 @@ class CompareMapsTest {
         TreeMap<String, Object> map2 = new TreeMap<>();
         TreeMap<String, Status> mapResult = new TreeMap<>();
 
-        map1.put("key1", 12);
+        map1.put("key1", valueFirst);
         map1.put("key2", true);
         map2.put("key2", "WOW!");
-        mapResult.put("key1", new Status(value1, true, "deleted"));
+        mapResult.put("key1", new Status(valueFirst, true, "deleted"));
         mapResult.put("key2", new Status("WOW!", "", "changed"));
 
         var actual = CompareMaps.compareMaps(map1, map2);
@@ -33,11 +32,11 @@ class CompareMapsTest {
     @Test
     void compareValues() {
         Object obj1 = true;
-        Object obj2 = value2;
-        Object obj3 = value2;
+        Object obj2 = valueSecond;
+        Object obj3 = valueSecond;
 
-        Object obj4 = new int[]{1, 2, value3};
-        Object obj5 = new int[]{1, 2, value3};
+        Object obj4 = new int[]{1, 2, valueThird};
+        Object obj5 = new int[]{1, 2, valueThird};
 
         var actual1 = CompareMaps.compareValues(obj1, obj2);
         var actual2 = CompareMaps.compareValues(obj2, obj3);
