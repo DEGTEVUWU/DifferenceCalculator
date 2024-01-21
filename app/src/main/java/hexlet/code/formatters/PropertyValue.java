@@ -5,7 +5,7 @@ public class PropertyValue {
         if (value1 instanceof Integer || value1 instanceof Character) {
             return "Simple type";
         } else if (value1 instanceof Boolean || value1 instanceof Double) {
-            return"Simple type";
+            return "Simple type";
         } else if (value1 instanceof Float || value1 instanceof Long || value1 == null) {
             return "Simple type";
         } else if (value1 instanceof String) {
