@@ -1,4 +1,4 @@
-name: Java CI
+name: Basic Functionality Check
 
 on:
   - push
