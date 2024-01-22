@@ -5,7 +5,6 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import java.io.IOException;
 import java.util.TreeMap;
 
-
 public class Parser {
     private static TreeMap parseYaml(String content) throws IOException {
         ObjectMapper mapper = new YAMLMapper();
