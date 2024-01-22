@@ -32,22 +32,20 @@ class FormatterTest {
         resultJson = readFixture("result_deep_structure.json");
 
     }
-
-  @Test
+    @Test
     void formatterWithStylishFormat() throws IOException {
-      String content1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
-      String content2 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest2.json");
-      String format = Differ.getDataFormat("./src/test/resources/fixtures/DeepStructureTest2.json");
-      TreeMap<String, Object> map1 = Parser.parse(content1, format);
-      TreeMap<String, Object> map2 = Parser.parse(content2, format);
+        String content1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
+        String content2 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest2.json");
+        String format = Differ.getDataFormat("./src/test/resources/fixtures/DeepStructureTest2.json");
+        TreeMap<String, Object> map1 = Parser.parse(content1, format);
+        TreeMap<String, Object> map2 = Parser.parse(content2, format);
 
-      var mapWithStatusKey = CompareMaps.compareMaps(map1, map2);
-      var actual = Formatter.formatter(mapWithStatusKey, "stylish");
+        var mapWithStatusKey = CompareMaps.compareMaps(map1, map2);
+        var actual = Formatter.formatter(mapWithStatusKey, "stylish");
 
-      var expected = resultStylish;
+        var expected = resultStylish;
 
-      assertThat(actual).isEqualTo(expected);
-
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test

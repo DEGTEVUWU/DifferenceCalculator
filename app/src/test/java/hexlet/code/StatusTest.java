@@ -28,6 +28,5 @@ class StatusTest {
         assertThat(value2.isStatus()).isEqualTo("changed");
         assertThat(value3.isStatus()).isEqualTo("deleted");
         assertThat(value4.isStatus()).isEqualTo("added");
-
     }
 }

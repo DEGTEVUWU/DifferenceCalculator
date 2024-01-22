@@ -37,7 +37,7 @@ class StylishTest {
         TreeMap<String, Object> map2 = Parser.parse(content2, format);
 
         var mapWithStatusKey = CompareMaps.compareMaps(map1, map2);
-        var actual = Stylish.stylish(mapWithStatusKey);
+        var actual = Stylish.render(mapWithStatusKey);
 
         var expected = result;
 
@@ -53,7 +53,7 @@ class StylishTest {
         TreeMap<String, Object> map2 = Parser.parse(content2, format);
 
         var mapWithStatusKey = CompareMaps.compareMaps(map1, map2);
-        var actual = Stylish.stylish(mapWithStatusKey);
+        var actual = Stylish.render(mapWithStatusKey);
 
         var expected = result;
 

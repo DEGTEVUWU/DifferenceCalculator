@@ -12,11 +12,11 @@ public class Formatter {
             throws IOException {
         String resultString = "";
         if (format.equals("stylish")) {
-            resultString = Stylish.stylish(mapWithStatusKeys);
+            resultString = Stylish.render(mapWithStatusKeys);
         } else if (format.equals("plain")) {
-            resultString = Plain.plain(mapWithStatusKeys);
+            resultString = Plain.render(mapWithStatusKeys);
         } else if (format.equals("json")) {
-            resultString = Json.json(mapWithStatusKeys);
+            resultString = Json.render(mapWithStatusKeys);
         }
         return resultString;
     }

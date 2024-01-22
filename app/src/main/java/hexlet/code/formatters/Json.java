@@ -6,7 +6,7 @@ import hexlet.code.Status;
 import java.util.TreeMap;
 
 public class Json {
-    public static String json(TreeMap<String, Status> mapWithKeysStatus) throws JsonProcessingException {
+    public static String render(TreeMap<String, Status> mapWithKeysStatus) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(mapWithKeysStatus);
     }

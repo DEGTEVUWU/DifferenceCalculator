@@ -21,7 +21,7 @@ public class Plain {
         return value1.toString();
     }
 
-    public static String plain(TreeMap<String, Status> mapWithKeysStatus) throws IOException {
+    public static String render(TreeMap<String, Status> mapWithKeysStatus) throws IOException {
         String resultString = "";
 
         for (var keyWithStatus : mapWithKeysStatus.entrySet()) {

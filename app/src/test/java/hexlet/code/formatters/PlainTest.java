@@ -9,15 +9,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.TreeMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 class PlainTest {
     private static String result;
     private final int valueSecond = 147;
-    private final int valueThird = 3;
-    private final int valueFourth = 4;
 
     private static Path getFixturePath(String fileName) {
         return Paths.get("src", "test", "resources", "fixtures", fileName)
@@ -41,7 +38,7 @@ class PlainTest {
         TreeMap<String, Object> map2 = Parser.parse(content2, format);
 
         var mapWithStatusKey = CompareMaps.compareMaps(map1, map2);
-        var actual = Plain.plain(mapWithStatusKey);
+        var actual = Plain.render(mapWithStatusKey);
 
         var expected = result;
 
@@ -57,7 +54,7 @@ class PlainTest {
         TreeMap<String, Object> map2 = Parser.parse(content2, format);
 
         var mapWithStatusKey = CompareMaps.compareMaps(map1, map2);
-        var actual = Plain.plain(mapWithStatusKey);
+        var actual = Plain.render(mapWithStatusKey);
 
         var expected = result;
 

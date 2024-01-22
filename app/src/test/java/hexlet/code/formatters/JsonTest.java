@@ -38,7 +38,7 @@ class JsonTest {
         TreeMap<String, Object> map2 = Parser.parse(content2, format);
 
         var mapWithStatusKey = CompareMaps.compareMaps(map1, map2);
-        var actual = Json.json(mapWithStatusKey);
+        var actual = Json.render(mapWithStatusKey);
 
         var expected = result;
 
@@ -54,7 +54,7 @@ class JsonTest {
         TreeMap<String, Object> map2 = Parser.parse(content2, format);
 
         var mapWithStatusKey = CompareMaps.compareMaps(map1, map2);
-        var actual = Json.json(mapWithStatusKey);
+        var actual = Json.render(mapWithStatusKey);
 
         var expected = result;
 

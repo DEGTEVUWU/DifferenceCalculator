@@ -4,7 +4,7 @@ import hexlet.code.Status;
 import java.util.TreeMap;
 
 public class Stylish {
-    public static String stylish(TreeMap<String, Status> mapWithKeysStatus) {
+    public static String render(TreeMap<String, Status> mapWithKeysStatus) {
         String resultString = "{\n";
 
         for (var keyWithStatus : mapWithKeysStatus.entrySet()) {
