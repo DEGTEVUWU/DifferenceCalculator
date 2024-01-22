@@ -23,6 +23,7 @@ public class Differ {
         String resultString = Formatter.formatter(mapWithStatusKeys, format);
 
         return resultString;
+        //comment
     }
 
     public static String generate(String path1, String path2) throws IOException {
