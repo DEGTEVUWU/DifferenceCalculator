@@ -1,9 +1,9 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -75,7 +75,7 @@ class FormatterTest {
 
 
     @Test
-    void formatterWithPlainFormat() throws JsonProcessingException {
+    void formatterWithPlainFormat() throws IOException {
         TreeMap<String, Object> map1 = new TreeMap<>();
         TreeMap<String, Object> map2 = new TreeMap<>();
         TreeMap<String, Status> mapWithStatus = new TreeMap<>();
@@ -113,7 +113,7 @@ class FormatterTest {
 
 
     @Test
-    void formatterWithJsonFormat() throws JsonProcessingException {
+    void formatterWithJsonFormat() throws IOException {
         TreeMap<String, Object> map1 = new TreeMap<>();
         TreeMap<String, Object> map2 = new TreeMap<>();
         TreeMap<String, Status> mapWithStatus = new TreeMap<>();
