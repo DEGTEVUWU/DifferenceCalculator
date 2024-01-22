@@ -11,12 +11,6 @@ import java.util.TreeMap;
 public class Plain {
 
     public static String propertyValue(Object value1) {
-        //if (value1 instanceof Integer || value1 instanceof Character) {
-         //   return value1.toString();
-        //} else if (value1 instanceof Boolean || value1 instanceof Double) {
-        //    return value1.toString();
-        //} else if (value1 instanceof Float || value1 instanceof Long) {
-        //    return value1.toString();}
         if (value1 == null) {
             return "null";
         } else if (value1 instanceof String) {
@@ -26,26 +20,6 @@ public class Plain {
         }
         return value1.toString();
     }
-
-
-    /*
-    private static String stringify(Object value) {
-        if (value == null) {
-            return "null";
-        }
-
-        if (value instanceof String) {
-            return "'" + value + "'";
-        }
-
-        if (value instanceof Map || value instanceof List) {
-            return "[complex value]";
-        }
-
-        return value.toString();
-    }
-
-     */
 
     public static String plain(TreeMap<String, Status> mapWithKeysStatus) throws IOException {
         String resultString = "";

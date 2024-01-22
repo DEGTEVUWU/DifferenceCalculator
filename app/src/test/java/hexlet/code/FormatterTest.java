@@ -2,7 +2,6 @@ package hexlet.code;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,10 +11,6 @@ import java.util.TreeMap;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class FormatterTest {
-    private final int valueSecond = 147;
-    private final int valueThird = 3;
-    private final int valueFourth = 4;
-    private final int valueFifth = 28;
     private static String resultPlain;
     private static String resultStylish;
     private static String resultJson;
@@ -38,64 +33,33 @@ class FormatterTest {
 
     }
 
-
-
-/*
   @Test
-    void formatterWithStylishFormat() throws JsonProcessingException {
-        TreeMap<String, Object> map1 = new TreeMap<>();
-        TreeMap<String, Object> map2 = new TreeMap<>();
-        TreeMap<String, Status> mapWithStatus = new TreeMap<>();
+    void formatterWithStylishFormat() throws IOException {
+      String content1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
+      String content2 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest2.json");
+      String format = Differ.getDataFormat("./src/test/resources/fixtures/DeepStructureTest2.json");
+      TreeMap<String, Object> map1 = Parser.parse(content1, format);
+      TreeMap<String, Object> map2 = Parser.parse(content2, format);
 
-        map1.put("numbers1", "Wow");
-        map1.put("numbers2", new String[]{"wow", "yes"});
-        map1.put("key1", 147);
+      var mapWithStatusKey = CompareMaps.compareMaps(map1, map2);
+      var actual = Formatter.formatter(mapWithStatusKey, "stylish");
 
-        map2.put("numbers1", new int[]{1, 2, 3, 4});
-        map2.put("chars1", new String[]{"a", "b", "c"});
-        map2.put("key1", new int[]{28, 28});
-        map2.put("key2", true);
+      var expected = resultStylish;
 
-        mapWithStatus.put("numbers1", new Status("Wow", new int[]{1, 2, 3, 4}, "changed"));
-        mapWithStatus.put("numbers2", new Status(new String[]{"wow", "yes"}, null, "deleted"));
-        mapWithStatus.put("key1", new Status(147, new int[]{28, 28}, "changed"));
-        mapWithStatus.put("chars1", new Status(null, new String[]{"a", "b", "c"}, "added"));
-        mapWithStatus.put("key2", new Status(null, true, "added"));
-
-        var actual = Formatter.formatter(mapWithStatus, "stylish");
-
-        var expected = resultStylish;
-
-        assertThat(actual).isEqualTo(expected);
+      assertThat(actual).isEqualTo(expected);
 
     }
 
-
- */
-
-
     @Test
     void formatterWithPlainFormat() throws IOException {
-        TreeMap<String, Object> map1 = new TreeMap<>();
-        TreeMap<String, Object> map2 = new TreeMap<>();
-        TreeMap<String, Status> mapWithStatus = new TreeMap<>();
+        String content1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
+        String content2 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest2.json");
+        String format = Differ.getDataFormat("./src/test/resources/fixtures/DeepStructureTest2.json");
+        TreeMap<String, Object> map1 = Parser.parse(content1, format);
+        TreeMap<String, Object> map2 = Parser.parse(content2, format);
 
-        map1.put("numbers1", "Wow");
-        map1.put("numbers2", new String[]{"wow", "yes"});
-        map1.put("key1", valueSecond);
-
-        map2.put("numbers1", new int[]{1, 2, valueThird, valueFourth});
-        map2.put("chars1", new String[]{"a", "b", "c"});
-        map2.put("key1", new int[]{valueFifth, valueFifth});
-        map2.put("key2", true);
-
-        mapWithStatus.put("numbers1", new Status("Wow", new int[]{1, 2, valueThird, valueFourth}, "changed"));
-        mapWithStatus.put("numbers2", new Status(new String[]{"wow", "yes"}, null, "deleted"));
-        mapWithStatus.put("key1", new Status(valueSecond, new int[]{valueFifth, valueFifth}, "changed"));
-        mapWithStatus.put("chars1", new Status(null, new String[]{"a", "b", "c"}, "added"));
-        mapWithStatus.put("key2", new Status(null, true, "added"));
-
-        var actual = Formatter.formatter(mapWithStatus, "plain");
+        var mapWithStatusKey = CompareMaps.compareMaps(map1, map2);
+        var actual = Formatter.formatter(mapWithStatusKey, "plain");
 
         var expected = resultPlain;
 
@@ -103,37 +67,16 @@ class FormatterTest {
 
     }
 
-
-
-
-
-
-
-
-
-
     @Test
     void formatterWithJsonFormat() throws IOException {
-        TreeMap<String, Object> map1 = new TreeMap<>();
-        TreeMap<String, Object> map2 = new TreeMap<>();
-        TreeMap<String, Status> mapWithStatus = new TreeMap<>();
+        String content1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
+        String content2 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest2.json");
+        String format = Differ.getDataFormat("./src/test/resources/fixtures/DeepStructureTest2.json");
+        TreeMap<String, Object> map1 = Parser.parse(content1, format);
+        TreeMap<String, Object> map2 = Parser.parse(content2, format);
 
-        map1.put("numbers1", "Wow");
-        map1.put("numbers2", new String[]{"wow", "yes"});
-        map1.put("key1", valueSecond);
-
-        map2.put("numbers1", new int[]{1, 2, valueThird, valueFourth});
-        map2.put("chars1", new String[]{"a", "b", "c"});
-        map2.put("key1", new int[]{valueFifth, valueFifth});
-        map2.put("key2", true);
-
-        mapWithStatus.put("numbers1", new Status("Wow", new int[]{1, 2, valueThird, valueFourth}, "changed"));
-        mapWithStatus.put("numbers2", new Status(new String[]{"wow", "yes"}, null, "deleted"));
-        mapWithStatus.put("key1", new Status(valueSecond, new int[]{valueFifth, valueFifth}, "changed"));
-        mapWithStatus.put("chars1", new Status(null, new String[]{"a", "b", "c"}, "added"));
-        mapWithStatus.put("key2", new Status(null, true, "added"));
-
-        var actual = Formatter.formatter(mapWithStatus, "json");
+        var mapWithStatusKey = CompareMaps.compareMaps(map1, map2);
+        var actual = Formatter.formatter(mapWithStatusKey, "json");
 
         var expected = resultJson;
 
