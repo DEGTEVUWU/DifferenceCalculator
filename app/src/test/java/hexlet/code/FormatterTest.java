@@ -64,7 +64,6 @@ class FormatterTest {
         var expected = resultPlain;
 
         assertThat(actual).isEqualTo(expected);
-
     }
 
     @Test

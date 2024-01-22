@@ -9,11 +9,15 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.TreeMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 class PlainTest {
     private static String result;
+    private final int valueSecond = 147;
+    private final int valueThird = 3;
+    private final int valueFourth = 4;
 
     private static Path getFixturePath(String fileName) {
         return Paths.get("src", "test", "resources", "fixtures", fileName)
@@ -58,5 +62,29 @@ class PlainTest {
         var expected = result;
 
         assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void propertyValue() {
+        Object obj1 = null;
+        Object obj2 = true;
+        Object obj3 = valueSecond;
+        Object obj4 = "Some string";
+
+        var actual1 = Plain.propertyValue(obj1);
+        var actual2 = Plain.propertyValue(obj2);
+        var actual3 = Plain.propertyValue(obj3);
+        var actual4 = Plain.propertyValue(obj4);
+
+        var expected1 = "null";
+        var expected2 = "true";
+        var expected3 = "147";
+        var expected4 = "\'Some string\'";
+
+        assertThat(actual1).isEqualTo(expected1);
+        assertThat(actual2).isEqualTo(expected2);
+        assertThat(actual3).isEqualTo(expected3);
+        assertThat(actual4).isEqualTo(expected4);
+
     }
 }
