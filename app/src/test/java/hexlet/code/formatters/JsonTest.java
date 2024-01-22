@@ -1,6 +1,7 @@
 package hexlet.code.formatters;
 
 import hexlet.code.CompareMaps;
+import hexlet.code.Differ;
 import hexlet.code.Parser;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -30,10 +31,13 @@ class JsonTest {
     }
     @Test
     void jsonFormatTest() throws IOException {
-        TreeMap<String, Object> testMap1 = Parser.parser("./src/test/resources/fixtures/DeepStructureTest1.json");
-        TreeMap<String, Object> testMap2 = Parser.parser("./src/test/resources/fixtures/DeepStructureTest2.json");
+        String content1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
+        String content2 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest2.json");
+        String format = Differ.getDataFormat("./src/test/resources/fixtures/DeepStructureTest2.json");
+        TreeMap<String, Object> map1 = Parser.parse(content1, format);
+        TreeMap<String, Object> map2 = Parser.parse(content2, format);
 
-        var mapWithStatusKey = CompareMaps.compareMaps(testMap1, testMap2);
+        var mapWithStatusKey = CompareMaps.compareMaps(map1, map2);
         var actual = Json.json(mapWithStatusKey);
 
         var expected = result;
@@ -43,10 +47,13 @@ class JsonTest {
 
     @Test
     void ymlFormatTest() throws IOException {
-        TreeMap<String, Object> testMap1 = Parser.parser("./src/test/resources/fixtures/DeepStructureTest1.yml");
-        TreeMap<String, Object> testMap2 = Parser.parser("./src/test/resources/fixtures/DeepStructureTest2.yml");
+        String content1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.yml");
+        String content2 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest2.yml");
+        String format = Differ.getDataFormat("./src/test/resources/fixtures/DeepStructureTest2.yml");
+        TreeMap<String, Object> map1 = Parser.parse(content1, format);
+        TreeMap<String, Object> map2 = Parser.parse(content2, format);
 
-        var mapWithStatusKey = CompareMaps.compareMaps(testMap1, testMap2);
+        var mapWithStatusKey = CompareMaps.compareMaps(map1, map2);
         var actual = Json.json(mapWithStatusKey);
 
         var expected = result;
