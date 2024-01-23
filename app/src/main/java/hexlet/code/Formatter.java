@@ -11,13 +11,12 @@ public class Formatter {
     public static String formatter(TreeMap<String, Status> mapWithStatusKeys, String format)
             throws IOException {
         String resultString = "";
-        if (format.equals("stylish")) {
-            resultString = Stylish.render(mapWithStatusKeys);
-        } else if (format.equals("plain")) {
-            resultString = Plain.render(mapWithStatusKeys);
-        } else if (format.equals("json")) {
-            resultString = Json.render(mapWithStatusKeys);
-        }
-        return resultString;
+        return switch (format) {
+            case "stylish" -> resultString = Stylish.render(mapWithStatusKeys);
+            case "plain" -> resultString = Plain.render(mapWithStatusKeys);
+            case "json" -> resultString = Json.render(mapWithStatusKeys);
+            default -> throw new IOException("Unknown format: '" + format + "'");
+        };
+
     }
 }
