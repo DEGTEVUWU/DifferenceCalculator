@@ -17,13 +17,10 @@ public class Parser {
     }
 
     public static TreeMap<String, Object> parse(String fileData, String fileFormat) throws IOException {
-        switch (fileFormat) {
-            case "yml":
-                return parseYaml(fileData);
-            case "json":
-                return parseJson(fileData);
-            default:
-                throw new IOException("Unknown format: '" + fileFormat + "'");
-        }
+        return switch (fileFormat) {
+            case "yml" ->  parseYaml(fileData);
+            case "json" ->  parseJson(fileData);
+            default -> throw new IOException("Unknown format: '" + fileFormat + "'");
+        };
     }
 }

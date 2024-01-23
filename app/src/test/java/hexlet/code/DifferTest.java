@@ -24,7 +24,6 @@ class DifferTest {
         Path filePath = getFixturePath(fileName);
         return Files.readString(filePath).trim();
     }
-
     @BeforeAll
     public static void beforeAll() throws Exception {
         resultJson = readFixture("result_json.json");
@@ -43,103 +42,6 @@ class DifferTest {
         assertThat(Differ.generate(filePath1, filePath2, "json")).isEqualTo(resultJson);
 
     }
-    /*
-    @Test
-    void checkingJsonFileInThePlainFormatter() throws IOException {
-        String value1 = "./src/test/resources/fixtures/DeepStructureTest1.json";
-        String value2 = "./src/test/resources/fixtures/DeepStructureTest2.json";
-
-        var actual = Differ.generate(value1, value2, "plain");
-
-        var expected = resultPlain;
-
-        assertThat(actual).isEqualTo(expected);
-    }
-
-    @Test
-    void checkingYmlFileInThePlainFormatter() throws IOException {
-        String value1 = "./src/test/resources/fixtures/DeepStructureTest1.yml";
-        String value2 = "./src/test/resources/fixtures/DeepStructureTest2.yml";
-
-        var actual = Differ.generate(value1, value2, "plain");
-
-        var expected = resultPlain;
-
-        assertThat(actual).isEqualTo(expected);
-    }
-
-    @Test
-    void checkingJsonFileInTheStylishFormatter() throws IOException {
-        String value1 = "./src/test/resources/fixtures/DeepStructureTest1.json";
-        String value2 = "./src/test/resources/fixtures/DeepStructureTest2.json";
-
-        var actual = Differ.generate(value1, value2, "stylish");
-
-        var expected = resultStylish;
-
-        assertThat(actual).isEqualTo(expected);
-    }
-
-    @Test
-    void checkingYmlFileInTheStylishFormatter() throws IOException {
-        String value1 = "./src/test/resources/fixtures/DeepStructureTest1.yml";
-        String value2 = "./src/test/resources/fixtures/DeepStructureTest2.yml";
-
-        var actual = Differ.generate(value1, value2, "stylish");
-
-        var expected = resultStylish;
-
-        assertThat(actual).isEqualTo(expected);
-    }
-
-    @Test
-    void checkingJsonFileInTheJsonFormatter() throws IOException {
-        String value1 = "./src/test/resources/fixtures/DeepStructureTest1.json";
-        String value2 = "./src/test/resources/fixtures/DeepStructureTest2.json";
-
-        var actual = Differ.generate(value1, value2, "json");
-
-        var expected = resultJson;
-
-        assertThat(actual).isEqualTo(expected);
-    }
-
-    @Test
-    void checkingYmlFileInTheJsonFormatter() throws IOException {
-        String value1 = "./src/test/resources/fixtures/DeepStructureTest1.yml";
-        String value2 = "./src/test/resources/fixtures/DeepStructureTest2.yml";
-
-        var actual = Differ.generate(value1, value2, "json");
-
-        var expected = resultJson;
-
-        assertThat(actual).isEqualTo(expected);
-    }
-
-    @Test
-    void checkingJsonFileInTheDefaultFormatter() throws IOException {
-        String value1 = "./src/test/resources/fixtures/DeepStructureTest1.json";
-        String value2 = "./src/test/resources/fixtures/DeepStructureTest2.json";
-
-        var actual = Differ.generate(value1, value2);
-
-        var expected = resultStylish;
-
-        assertThat(actual).isEqualTo(expected);
-    }
-
-    @Test
-    void checkingYmlFileInTheDefaultFormatter() throws IOException {
-        String value1 = "./src/test/resources/fixtures/DeepStructureTest1.yml";
-        String value2 = "./src/test/resources/fixtures/DeepStructureTest2.yml";
-
-        var actual = Differ.generate(value1, value2);
-
-        var expected = resultStylish;
-
-        assertThat(actual).isEqualTo(expected);
-    }
-
     @Test
     void checkingGetDataFormatWithJsonFormat() throws IOException {
         String value = "DeepStructure1.json";
@@ -160,9 +62,6 @@ class DifferTest {
 
         assertThat(actual).isEqualTo(expected);
     }
-
-     */
-
     @Test
     void checkingGetDataFormatWithUncheckingFormat() throws IOException {
         String value = "DeepStructure";
@@ -173,6 +72,4 @@ class DifferTest {
 
         assertThat(actual).isEqualTo(expected);
     }
-
-
 }

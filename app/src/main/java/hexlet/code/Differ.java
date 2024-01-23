@@ -18,9 +18,8 @@ public class Differ {
 
         TreeMap<String, Status> mapWithStatusKeys = CompareMaps.compareMaps(map1, map2);
 
-        String resultString = Formatter.formatter(mapWithStatusKeys, format);
+        return Formatter.formatter(mapWithStatusKeys, format);
 
-        return resultString;
     }
 
     public static String generate(String path1, String path2) throws IOException {

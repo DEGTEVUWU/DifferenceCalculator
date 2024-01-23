@@ -10,6 +10,9 @@ import java.util.concurrent.Callable;
         description = "Compares two configuration files and shows a difference.")
 
 class App implements Callable {
+    private static final int SUCCESS_EXIT_CODE = 0;
+    private static final int ERROR_EXIT_CODE = 1;
+
     @Option(names = {"-f", "--format"}, defaultValue = "stylish", paramLabel = "format",
             description = "output format [default: ${DEFAULT-VALUE}]")
     private String format;
@@ -18,9 +21,15 @@ class App implements Callable {
     @Parameters(paramLabel = "filepath2", description = "path to second file")
     private String filePath2;
     @Override
-    public String call() throws IOException {
-        System.out.println(Differ.generate(filePath1, filePath2, format));
-        return "";
+    public Integer call() throws IOException {
+        try {
+            String formattedDiff = Differ.generate(filePath1, filePath2, format);
+            System.out.println(formattedDiff);
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+            return ERROR_EXIT_CODE;
+        }
+        return SUCCESS_EXIT_CODE;
     }
     public static void main(String[] args) throws IOException {
 
