@@ -14,12 +14,12 @@ class App implements Callable {
             description = "output format [default: ${DEFAULT-VALUE}]")
     private String format;
     @Parameters(paramLabel = "filepath1", description = "path to first file")
-    private String files1;
+    private String filePath1;
     @Parameters(paramLabel = "filepath2", description = "path to second file")
-    private String files2;
+    private String filePath2;
     @Override
     public String call() throws IOException {
-        System.out.println(Differ.generate(files1, files2, format));
+        System.out.println(Differ.generate(filePath1, filePath2, format));
         return "";
     }
     public static void main(String[] args) throws IOException {
