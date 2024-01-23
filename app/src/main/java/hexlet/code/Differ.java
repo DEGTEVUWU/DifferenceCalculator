@@ -30,20 +30,15 @@ public class Differ {
     }
 
     public static String readFile(String filePath) throws IOException {
-        Path path;
+        String content;
+        Path fullPath;
         if (Files.exists(Paths.get(filePath))) {
-            path = Paths.get(filePath);
+            fullPath = Paths.get(filePath);
         } else {
-            path = Paths.get("./src/main/resources/fixtures", filePath);
+            fullPath = Paths.get("./src/main/resources/fixtures", filePath);
         }
+        content = Files.readString(fullPath);
 
-        StringBuilder content = new StringBuilder();
-        try (BufferedReader reader = new BufferedReader(new FileReader(path.toFile()))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                content.append(line).append("\n");
-            }
-        }
         return content.toString();
     }
 
