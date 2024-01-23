@@ -1,6 +1,9 @@
 package hexlet.code;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -28,8 +31,19 @@ class DifferTest {
         resultPlain = readFixture("result_plain.txt");
         resultStylish = readFixture("result_stylish.txt");
     }
+    @ParameterizedTest
+    @ValueSource(strings = {"json", "yml"})
+    public void generateTest(String format) throws Exception {
+        String filePath1 = getFixturePath("DeepStructureTest1." + format).toString();
+        String filePath2 = getFixturePath("DeepStructureTest2." + format).toString();
 
+        assertThat(Differ.generate(filePath1, filePath2)).isEqualTo(resultStylish);
+        assertThat(Differ.generate(filePath1, filePath2, "stylish")).isEqualTo(resultStylish);
+        assertThat(Differ.generate(filePath1, filePath2, "plain")).isEqualTo(resultPlain);
+        assertThat(Differ.generate(filePath1, filePath2, "json")).isEqualTo(resultJson);
 
+    }
+    /*
     @Test
     void checkingJsonFileInThePlainFormatter() throws IOException {
         String value1 = "./src/test/resources/fixtures/DeepStructureTest1.json";
@@ -157,4 +171,6 @@ class DifferTest {
 
         assertThat(actual).isEqualTo(expected);
     }
+
+     */
 }
