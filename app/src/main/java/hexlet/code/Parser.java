@@ -16,11 +16,11 @@ public class Parser {
         return mapper.readValue(content, TreeMap.class);
     }
 
-    public static TreeMap<String, Object> parse(String fileData, String fileFormat) throws IOException {
-        return switch (fileFormat) {
-            case "yml" ->  parseYaml(fileData);
-            case "json" ->  parseJson(fileData);
-            default -> throw new IOException("Unknown format: '" + fileFormat + "'");
+    public static TreeMap<String, Object> parse(String data, String format) throws IOException {
+        return switch (format) {
+            case "yml" ->  parseYaml(data);
+            case "json" ->  parseJson(data);
+            default -> throw new IOException("Unknown format: '" + format + "'");
         };
     }
 }
