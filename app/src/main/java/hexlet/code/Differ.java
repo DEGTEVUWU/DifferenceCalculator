@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 import java.util.TreeMap;
 
 public class Differ {
-    public static String generate(String path1, String path2, String format) throws IOException {
+    public static String generate(String path1, String path2, String format) throws Exception {
         String firstFileData = readFile(path1);
         String secondFileData = readFile(path2);
         String firstFileFormat = getDataFormat(path1);
@@ -22,21 +22,24 @@ public class Differ {
 
     }
 
-    public static String generate(String path1, String path2) throws IOException {
+    public static String generate(String path1, String path2) throws Exception {
         return generate(path1, path2, "stylish");
     }
 
-    public static String readFile(String filePath) throws IOException {
-        String content;
+    public static String readFile(String filePath) throws Exception {
         Path fullPath;
         if (Files.exists(Paths.get(filePath))) {
             fullPath = Paths.get(filePath);
         } else {
             fullPath = Paths.get("./src/main/resources/fixtures", filePath);
         }
-        content = Files.readString(fullPath);
 
-        return content.toString();
+        if (!Files.exists(fullPath)) {
+            throw new IOException("File '" + fullPath + "' does not exist");
+        }
+
+        return Files.readString(fullPath);
+
     }
 
     public static String getDataFormat(String filePath) {

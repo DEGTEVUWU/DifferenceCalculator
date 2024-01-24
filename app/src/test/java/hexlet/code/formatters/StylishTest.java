@@ -5,7 +5,6 @@ import hexlet.code.Differ;
 import hexlet.code.Parser;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -29,7 +28,7 @@ class StylishTest {
         result = readFixture("result_deep_structure_stylish.txt");
     }
     @Test
-    void jsonFormatTest() throws IOException {
+    void jsonFormatTest() throws Exception {
         String content1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
         String content2 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest2.json");
         String format = Differ.getDataFormat("./src/test/resources/fixtures/DeepStructureTest2.json");
@@ -45,7 +44,7 @@ class StylishTest {
     }
 
     @Test
-    void ymlFormatTest() throws IOException {
+    void ymlFormatTest() throws Exception {
         String content1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
         String content2 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest2.json");
         String format = Differ.getDataFormat("./src/test/resources/fixtures/DeepStructureTest2.json");

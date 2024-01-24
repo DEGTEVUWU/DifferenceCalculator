@@ -3,7 +3,6 @@ package hexlet.code.formatters;
 import hexlet.code.Status;
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -20,7 +19,7 @@ public class Plain {
         return value1.toString();
     }
 
-    public static String render(TreeMap<String, Status> mapWithKeysStatus) throws IOException {
+    public static String render(TreeMap<String, Status> mapWithKeysStatus) throws Exception {
         String resultString = "";
 
         for (var keyWithStatus : mapWithKeysStatus.entrySet()) {
@@ -46,7 +45,7 @@ public class Plain {
                     resultString += "";
                     break;
                 default:
-                    throw new IOException("Unknown node type: '" + type + "'");
+                    throw new Exception("Unknown node type: '" + type + "'");
             }
         }
         resultString = StringUtils.chop(resultString);

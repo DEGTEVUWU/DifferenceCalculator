@@ -1,7 +1,6 @@
 package hexlet.code;
 
 import org.junit.jupiter.api.Test;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.TreeMap;
 
@@ -12,7 +11,7 @@ class ParserTest {
     private final int valueSecond = 147;
 
     @Test
-    void parser() throws IOException {
+    void parser() throws Exception {
         String content1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
         String format = Differ.getDataFormat("./src/test/resources/fixtures/DeepStructureTest1.json");
         TreeMap<String, Object> actual = Parser.parse(content1, format);
@@ -33,7 +32,7 @@ class ParserTest {
     }
 
     @Test
-    void parserTest2() throws IOException {
+    void parserTest2() throws Exception {
         String content1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
         String format = Differ.getDataFormat("./src/test/resources/fixtures/DeepStructureTest2.json");
         TreeMap<String, Object> actual = Parser.parse(content1, format);

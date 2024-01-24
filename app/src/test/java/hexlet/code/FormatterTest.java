@@ -2,7 +2,6 @@ package hexlet.code;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -33,7 +32,7 @@ class FormatterTest {
 
     }
     @Test
-    void formatterWithStylishFormat() throws IOException {
+    void formatterWithStylishFormat() throws Exception {
         String content1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
         String content2 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest2.json");
         String format = Differ.getDataFormat("./src/test/resources/fixtures/DeepStructureTest2.json");
@@ -49,7 +48,7 @@ class FormatterTest {
     }
 
     @Test
-    void formatterWithPlainFormat() throws IOException {
+    void formatterWithPlainFormat() throws Exception {
         String content1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
         String content2 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest2.json");
         String format = Differ.getDataFormat("./src/test/resources/fixtures/DeepStructureTest2.json");
@@ -65,7 +64,7 @@ class FormatterTest {
     }
 
     @Test
-    void formatterWithJsonFormat() throws IOException {
+    void formatterWithJsonFormat() throws Exception {
         String content1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
         String content2 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest2.json");
         String format = Differ.getDataFormat("./src/test/resources/fixtures/DeepStructureTest2.json");

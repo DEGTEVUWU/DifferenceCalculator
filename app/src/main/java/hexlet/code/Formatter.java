@@ -9,7 +9,7 @@ import java.util.TreeMap;
 
 public class Formatter {
     public static String formatter(TreeMap<String, Status> mapWithStatusKeys, String format)
-            throws IOException {
+            throws Exception {
         return switch (format) {
             case "stylish" -> Stylish.render(mapWithStatusKeys);
             case "plain" -> Plain.render(mapWithStatusKeys);

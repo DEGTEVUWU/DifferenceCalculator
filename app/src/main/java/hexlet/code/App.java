@@ -3,8 +3,6 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
-
-import java.io.IOException;
 import java.util.concurrent.Callable;
 @Command(name = "gendiff", mixinStandardHelpOptions = true, version = "App 1.0",
         description = "Compares two configuration files and shows a difference.")
@@ -21,17 +19,17 @@ class App implements Callable {
     @Parameters(paramLabel = "filepath2", description = "path to second file")
     private String filePath2;
     @Override
-    public Integer call() throws IOException {
+    public Integer call() throws Exception {
         try {
             String formattedDiff = Differ.generate(filePath1, filePath2, format);
             System.out.println(formattedDiff);
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.err.println(e.getMessage());
             return ERROR_EXIT_CODE;
         }
         return SUCCESS_EXIT_CODE;
     }
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
 
         int exitCode = new CommandLine(new App()).execute(args);
         System.exit(exitCode);

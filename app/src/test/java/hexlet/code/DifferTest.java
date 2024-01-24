@@ -3,8 +3,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -43,7 +41,7 @@ class DifferTest {
 
     }
     @Test
-    void checkingGetDataFormatWithJsonFormat() throws IOException {
+    void checkingGetDataFormatWithJsonFormat() {
         String value = "DeepStructure1.json";
 
         var actual = Differ.getDataFormat(value);
@@ -53,7 +51,7 @@ class DifferTest {
         assertThat(actual).isEqualTo(expected);
     }
     @Test
-    void checkingGetDataFormatWithYmlFormat() throws IOException {
+    void checkingGetDataFormatWithYmlFormat() {
         String value = "DeepStructure1.yml";
 
         var actual = Differ.getDataFormat(value);
@@ -63,7 +61,7 @@ class DifferTest {
         assertThat(actual).isEqualTo(expected);
     }
     @Test
-    void checkingGetDataFormatWithUncheckingFormat() throws IOException {
+    void checkingGetDataFormatWithUncheckingFormat() {
         String value = "DeepStructure";
 
         var actual = Differ.getDataFormat(value);
