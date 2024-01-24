@@ -25,8 +25,8 @@ By default, formatting is in style, there is also a flat format and a json forma
 ### Installing ###
 
 ```
-git clone git@github.com:DEGTEVUWU/java-project-61.git
-cd java-project-61
+git clone git@github.com:DEGTEVUWU/java-project-71.git
+cd java-project-71
 make install
 ```
 
