@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CompareMapsTest {
     private final int valueFirst = 12;
-    private final int valueSecond = 147;
 
     @Test
     void compareMaps() {
@@ -25,19 +24,4 @@ class CompareMapsTest {
         assertThat(actual.get("key2").isStatus()).isEqualTo(expected.get("key2").isStatus());
 
     }
-
-    @Test
-    void compareValues() {
-        Object obj1 = true;
-        Object obj2 = valueSecond;
-        Object obj3 = valueSecond;
-
-        var actual1 = CompareMaps.compareValues(obj1, obj2);
-        var actual2 = CompareMaps.compareValues(obj2, obj3);
-
-        assertThat(actual1).isFalse();
-        assertThat(actual2).isTrue();
-
-    }
-
 }

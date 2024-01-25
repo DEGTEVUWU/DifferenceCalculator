@@ -29,8 +29,8 @@ class PlainTest {
     }
     @Test
     void jsonFormatTest() throws Exception {
-        TreeMap<String, Object> map1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
-        TreeMap<String, Object> map2 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest2.json");
+        TreeMap<String, Object> map1 = Differ.getData("./src/test/resources/fixtures/DeepStructureTest1.json");
+        TreeMap<String, Object> map2 = Differ.getData("./src/test/resources/fixtures/DeepStructureTest2.json");
 
         var mapWithStatusKey = CompareMaps.compareMaps(map1, map2);
         var actual = Plain.render(mapWithStatusKey);
@@ -42,8 +42,8 @@ class PlainTest {
 
     @Test
     void ymlFormatTest() throws Exception {
-        TreeMap<String, Object> map1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
-        TreeMap<String, Object> map2 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest2.json");
+        TreeMap<String, Object> map1 = Differ.getData("./src/test/resources/fixtures/DeepStructureTest1.json");
+        TreeMap<String, Object> map2 = Differ.getData("./src/test/resources/fixtures/DeepStructureTest2.json");
 
         var mapWithStatusKey = CompareMaps.compareMaps(map1, map2);
         var actual = Plain.render(mapWithStatusKey);

@@ -33,8 +33,8 @@ class FormatterTest {
     }
     @Test
     void formatterWithStylishFormat() throws Exception {
-        TreeMap<String, Object> map1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
-        TreeMap<String, Object> map2 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest2.json");
+        TreeMap<String, Object> map1 = Differ.getData("./src/test/resources/fixtures/DeepStructureTest1.json");
+        TreeMap<String, Object> map2 = Differ.getData("./src/test/resources/fixtures/DeepStructureTest2.json");
 
         var mapWithStatusKey = CompareMaps.compareMaps(map1, map2);
         var actual = Formatter.formatter(mapWithStatusKey, "stylish");
@@ -46,8 +46,8 @@ class FormatterTest {
 
     @Test
     void formatterWithPlainFormat() throws Exception {
-        TreeMap<String, Object> map1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
-        TreeMap<String, Object> map2 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest2.json");
+        TreeMap<String, Object> map1 = Differ.getData("./src/test/resources/fixtures/DeepStructureTest1.json");
+        TreeMap<String, Object> map2 = Differ.getData("./src/test/resources/fixtures/DeepStructureTest2.json");
 
         var mapWithStatusKey = CompareMaps.compareMaps(map1, map2);
         var actual = Formatter.formatter(mapWithStatusKey, "plain");
@@ -59,8 +59,8 @@ class FormatterTest {
 
     @Test
     void formatterWithJsonFormat() throws Exception {
-        TreeMap<String, Object> map1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
-        TreeMap<String, Object> map2 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest2.json");
+        TreeMap<String, Object> map1 = Differ.getData("./src/test/resources/fixtures/DeepStructureTest1.json");
+        TreeMap<String, Object> map2 = Differ.getData("./src/test/resources/fixtures/DeepStructureTest2.json");
 
         var mapWithStatusKey = CompareMaps.compareMaps(map1, map2);
         var actual = Formatter.formatter(mapWithStatusKey, "json");
