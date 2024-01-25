@@ -14,7 +14,7 @@ public class Formatter {
             case "stylish" -> Stylish.render(mapWithStatusKeys);
             case "plain" -> Plain.render(mapWithStatusKeys);
             case "json" -> Json.render(mapWithStatusKeys);
-            default -> throw new IOException("Unknown format: '" + format + "'");
+            default -> throw new Exception("Unknown format: '" + format + "'");
         };
     }
 }
