@@ -8,13 +8,8 @@ import java.util.TreeMap;
 
 public class Differ {
     public static String generate(String path1, String path2, String format) throws Exception {
-        String firstFileData = readFile(path1);
-        String secondFileData = readFile(path2);
-        String firstFileFormat = getDataFormat(path1);
-        String secondFileFormat = getDataFormat(path1);
-
-        TreeMap<String, Object> map1 =  Parser.parse(firstFileData, firstFileFormat);
-        TreeMap<String, Object> map2 =  Parser.parse(secondFileData, secondFileFormat);
+        TreeMap<String, Object> map1 = readFile(path1);
+        TreeMap<String, Object> map2 = readFile(path2);
 
         TreeMap<String, Status> mapWithStatusKeys = CompareMaps.compareMaps(map1, map2);
 
@@ -26,22 +21,24 @@ public class Differ {
         return generate(path1, path2, "stylish");
     }
 
-    public static String readFile(String filePath) throws Exception {
-        Path fullPath;
-        if (Files.exists(Paths.get(filePath))) {
-            fullPath = Paths.get(filePath);
-        } else {
-            fullPath = Paths.get("./src/main/resources/fixtures", filePath);
-        }
+    public static TreeMap<String, Object> readFile(String filePath) throws Exception {
+
+        Path fullPath = getFullPath(filePath);
 
         if (!Files.exists(fullPath)) {
-            throw new IOException("File '" + fullPath + "' does not exist");
+            throw new Exception("File '" + fullPath + "' does not exist");
         }
 
-        return Files.readString(fullPath);
+        String content = Files.readString(fullPath);
+        String dataFormat = getDataFormat(filePath);
+
+        return Parser.parse(content, dataFormat);
 
     }
+    public static Path getFullPath(String path) {
+        return Paths.get(path).toAbsolutePath().normalize();
 
+    }
     public static String getDataFormat(String filePath) {
         int index = filePath.lastIndexOf('.');
         return index > 0
