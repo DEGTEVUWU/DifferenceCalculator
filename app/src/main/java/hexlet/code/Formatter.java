@@ -4,7 +4,6 @@ import hexlet.code.formatters.Json;
 import hexlet.code.formatters.Plain;
 import hexlet.code.formatters.Stylish;
 
-import java.io.IOException;
 import java.util.TreeMap;
 
 public class Formatter {
