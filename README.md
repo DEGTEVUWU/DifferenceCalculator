@@ -20,7 +20,10 @@ By default, formatting is in style, there is also a flat format and a json forma
 
 ### Requirements ###
 
-> Having [Git installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+#### Having: ####  
+> [Git installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)  
+> [Java](https://www.oracle.com/java/technologies/downloads)  
+> [Gradle](https://gradle.org/install)
 
 ### Installing ###
 
