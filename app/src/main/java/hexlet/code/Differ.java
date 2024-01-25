@@ -7,8 +7,8 @@ import java.util.TreeMap;
 
 public class Differ {
     public static String generate(String path1, String path2, String format) throws Exception {
-        TreeMap<String, Object> map1 = readFile(path1);
-        TreeMap<String, Object> map2 = readFile(path2);
+        TreeMap<String, Object> map1 = getData(path1);
+        TreeMap<String, Object> map2 = getData(path2);
 
         TreeMap<String, Status> mapWithStatusKeys = CompareMaps.compareMaps(map1, map2);
 
@@ -20,7 +20,7 @@ public class Differ {
         return generate(path1, path2, "stylish");
     }
 
-    public static TreeMap<String, Object> readFile(String filePath) throws Exception {
+    public static TreeMap<String, Object> getData(String filePath) throws Exception {
 
         Path fullPath = getFullPath(filePath);
 
