@@ -2,7 +2,6 @@ package hexlet.code.formatters;
 
 import hexlet.code.CompareMaps;
 import hexlet.code.Differ;
-import hexlet.code.Parser;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.nio.file.Files;
@@ -29,11 +28,8 @@ class StylishTest {
     }
     @Test
     void jsonFormatTest() throws Exception {
-        String content1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
-        String content2 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest2.json");
-        String format = Differ.getDataFormat("./src/test/resources/fixtures/DeepStructureTest2.json");
-        TreeMap<String, Object> map1 = Parser.parse(content1, format);
-        TreeMap<String, Object> map2 = Parser.parse(content2, format);
+        TreeMap<String, Object> map1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
+        TreeMap<String, Object> map2 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest2.json");
 
         var mapWithStatusKey = CompareMaps.compareMaps(map1, map2);
         var actual = Stylish.render(mapWithStatusKey);
@@ -45,11 +41,8 @@ class StylishTest {
 
     @Test
     void ymlFormatTest() throws Exception {
-        String content1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
-        String content2 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest2.json");
-        String format = Differ.getDataFormat("./src/test/resources/fixtures/DeepStructureTest2.json");
-        TreeMap<String, Object> map1 = Parser.parse(content1, format);
-        TreeMap<String, Object> map2 = Parser.parse(content2, format);
+        TreeMap<String, Object> map1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
+        TreeMap<String, Object> map2 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest2.json");
 
         var mapWithStatusKey = CompareMaps.compareMaps(map1, map2);
         var actual = Stylish.render(mapWithStatusKey);

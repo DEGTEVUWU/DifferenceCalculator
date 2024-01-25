@@ -12,10 +12,7 @@ class ParserTest {
 
     @Test
     void parser() throws Exception {
-        String content1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
-        String format = Differ.getDataFormat("./src/test/resources/fixtures/DeepStructureTest1.json");
-        TreeMap<String, Object> actual = Parser.parse(content1, format);
-
+        TreeMap<String, Object> actual = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
         TreeMap<String, Object> expected = new TreeMap<>();
 
         expected.put("numbers1", "Wow");
@@ -33,11 +30,7 @@ class ParserTest {
 
     @Test
     void parserTest2() throws Exception {
-        String content1 = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
-        String format = Differ.getDataFormat("./src/test/resources/fixtures/DeepStructureTest2.json");
-        TreeMap<String, Object> actual = Parser.parse(content1, format);
-
-        TreeMap<String, Object> expected = new TreeMap<>();
+        TreeMap<String, Object> actual = Differ.readFile("./src/test/resources/fixtures/DeepStructureTest1.json");
 
         assertThat(actual).isNotEmpty();
 
