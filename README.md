@@ -28,16 +28,31 @@ By default, formatting is in style, there is also a flat format and a json forma
 ### Installing ###
 
 ```
-git clone git@github.com:DEGTEVUWU/java-project-71.git
-cd java-project-71
+git clone git@github.com:DEGTEVUWU/DifferenceCalculator.git
+cd DifferenceCalculator/app
 make install
 ```
 
-### To run, use ###
+### Common call constructs ###
 
 ```
 ./build/install/app/bin/app [-f required format(not necessary option)] filepeth1 filepeth2
 ```
+
+### Commands
+``` 
+./build/install/app/bin/app ./src/main/resources/fixtures/file1.json ./src/main/resources/fixtures/file2.json
+./build/install/app/bin/app -f plain./src/main/resources/fixtures/file1.json ./src/main/resources/fixtures/file2.json
+./build/install/app/bin/app -f json ./src/main/resources/fixtures/file1.json ./src/main/resources/fixtures/file2.json
+```
+
+At the end, the full path to the file from the app folder is indicated; for faster work, an example of three commands is placed in the Makefile; add new commands there with the paths to other files you need. If the -f flag is absent, the default formatter is used - stylish.
+```
+run-dist stylish:
+run-dist plain:
+run-dist json:
+```
+
 ### Examples of using ###
 [Example of comparing two .json files](https://asciinema.org/a/2mRgNUFUOps5D7ZBa5hmHSP16)  
 
