@@ -12,8 +12,15 @@ build:
 install:
 	./gradlew clean install
 
-run-dist:
-	./build/install/app/bin/app
+plain:
+	./build/install/app/bin/app -f plain ./src/main/resources/fixtures/file1.json ./src/main/resources/fixtures/file2.json
+
+json:
+	./build/install/app/bin/app -f json ./src/main/resources/fixtures/file1.json ./src/main/resources/fixtures/file2.json
+
+stylish:
+	./build/install/app/bin/app ./src/main/resources/fixtures/file1.json ./src/main/resources/fixtures/file2.json
+
 
 run:
 	./gradlew run
